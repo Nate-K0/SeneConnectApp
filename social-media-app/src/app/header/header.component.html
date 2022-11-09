@@ -1,0 +1,28 @@
+<header class="header">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container align-items-center justify-content-between text-center">
+      <!-- Navbar Brand -->
+      <div class="navbar-header d-flex align-items-center justify-content-between">
+        <a routerLink="/home" class="navbar-brand" routerLinkActive='active'>SeneConnect</a>
+      </div>
+      <!-- Navbar Search -->
+      <form class="search-form">
+        <mat-form-field>
+          <input class="toolbar-search" type="search" matInput placeholder="Search for student...">
+          <mat-icon matSuffix style="font-size: 20px">search</mat-icon>
+        </mat-form-field>
+      </form>
+      <!-- Navbar Menu -->
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a routerLink="/login" class="nav-link " routerLinkActive='active'>Login</a></li>
+        <li class="nav-item"><a routerLink="/signup" class="nav-link " routerLinkActive='active'>Register</a></li>
+        <!-- My Account should be visible only when logged in
+          Login and Register buttons are hidden when logged in 
+          Navbar contains Logout link -->
+        <li class="nav-item"><a routerLink="/account" class="nav-link " routerLinkActive='active'>My Account</a></li>
+        <li class="nav-item"><a routerLink="/home" class="nav-link " routerLinkActive='active'>Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
