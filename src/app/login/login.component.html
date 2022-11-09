@@ -1,0 +1,27 @@
+<body>
+    <div class="login-box">
+        <h2>SeneConnect</h2>
+        <p>Please Login</p>
+
+        <form #loginForm="ngForm" (ngSubmit)="handleLogin(loginForm)" ngNativeValidate>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <i class='bx bxs-user'></i>
+                <input type="username" id="username" name="username" placeholder="Enter username" [(ngModel)]="user.userName" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <i class='bx bxs-key'></i>
+                <input type="password" id="password" name="password" placeholder="Enter password" [(ngModel)]="user.password" required>
+            </div>
+
+            <div class="alert alert-danger" *ngIf="warning">
+                {{warning}}
+              </div>
+
+            <input type="submit" value="Login">
+        </form>
+        <br>
+        <a class="create-account" routerLink="/signup">Don't have an account? Create one here</a>
+    </div>
+</body>
