@@ -16,3 +16,12 @@
 
 ### Vercel Updates
 1. The good thing about vercel is that it connects directly to the github repo and automatically deploys the changes when a new github push has occured
+2. If it doesn't automatically deploy the updates
+  1. Click the "seneconnect app" from the main menu
+  2. Click the "Deployments" tab
+  3. Click the most recent deployment in the list
+  4. Click the 3 vertical dots to the left of the "Visit" button
+  5. Click "Redeploy" in the drop down menu
+
+### Deployment Video
+https://www.youtube.com/watch?v=KWiBhkdv9Y4
