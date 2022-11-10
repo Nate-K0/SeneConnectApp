@@ -41,8 +41,8 @@ In general, we will all be team leaders
 | Oct. 4, 2022, 11:40 AM | Definition of Done, Working Agreement feedback |
 | Oct. 17, 2022, 12:00 PM  | Add project to VS Code, check git_workflow.md |
 | Oct. 31, 2022, 12:00 PM | Determine user stories to include before first sprint planning meeting<br>Discuss project deployment from development to production environment |
-| Nov. 7 2022, 12:00 PM  | Prepare first sprint and deployment document<br>Connect to MongoDB database<br>Implement login and register page |
-| Nov. 13, 2022, 12:00 PM  | TBD |
+| Nov. 7, 2022, 12:00 PM  | Prepare first sprint and deployment document<br>Connect to MongoDB database<br>Implement login and register page |
+| Nov. 14, 2022, 12:00 PM  | TBD |
 | Nov. 21, 2022, 12:00 PM  | TBD |
 | Nov. 28, 2022, 12:00 PM  | TBD |
 | Dec. 5, 2022, 12:00 PM  | TBD |
