@@ -10,6 +10,8 @@ const dataService = require("./modules/data-service.js");
 const data = dataService(mongoDBConnectionString);
 const app = express();
 
+app.use(express.static('public'));
+
 const jwt = require('jsonwebtoken');
 const passport = require("passport");
 const passportJWT = require("passport-jwt");
