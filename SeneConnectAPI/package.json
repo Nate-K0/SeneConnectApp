@@ -1,11 +1,7 @@
 {
   "name": "seneconnectapi",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
-  "engines": {
-    "node": "v16.17.0"
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
@@ -21,5 +17,6 @@
     "mongoose": "^6.7.2",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.0"
-  }
+  },
+  "description": ""
 }

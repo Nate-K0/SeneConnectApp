@@ -129,3 +129,5 @@ data.connect().then(()=>{
     process.exit();
 });
 //testing
+
+module.exports = app;
