@@ -44,7 +44,7 @@ app.use(passport.initialize());
 app.use(bodyParser.json());
 app.use(cors());
 
-app.post("/api/posts", (req,res)=>{
+app.post("/api/posts", async (req,res)=>{
     data.addNewPost(req.body).then((msg)=>{
         res.json({message: msg});
     }).catch((err)=>{
@@ -52,7 +52,7 @@ app.post("/api/posts", (req,res)=>{
     });
 });
 
-app.post("/api/users", (req,res)=>{
+app.post("/api/users", async (req,res)=>{
     data.addNewUser(req.body).then((msg)=>{
         res.json({message: msg});
     }).catch((err)=>{
@@ -60,7 +60,7 @@ app.post("/api/users", (req,res)=>{
     });
 });
 
-app.post("/api/login", (req,res)=>{
+app.post("/api/login", async (req,res)=>{
     data.LoginUser(req.body).then((user)=>{
         var payload = { 
             _id: user._id,
@@ -77,7 +77,7 @@ app.post("/api/login", (req,res)=>{
     });
 });
 
-app.get("/api/posts", (req,res) => {
+app.get("/api/posts", async (req,res) => {
     data.getAllPosts(req.query.page, req.query.perPage).then((data)=>{
         res.json(data);
     })
@@ -86,7 +86,7 @@ app.get("/api/posts", (req,res) => {
     })
 });
 
-app.get("/api/users", (req,res) => {
+app.get("/api/users", async (req,res) => {
     data.getAllUsers().then((data)=>{
         res.json(data);
     })
@@ -95,7 +95,7 @@ app.get("/api/users", (req,res) => {
     })
 });
 
-app.get("/api/posts/:id", (req,res)=>{
+app.get("/api/posts/:id", async (req,res)=>{
     data.getPostById(req.params.id).then(data=>{
         res.json(data);
     }).catch((err)=>{
@@ -103,7 +103,7 @@ app.get("/api/posts/:id", (req,res)=>{
     });
 });
 
-app.get("/api/users/:id",(req,res)=>{
+app.get("/api/users/:id", async (req,res)=>{
     data.getUserById(req.params.id).then(data=>{
         res.json(data);
     }).catch((err)=>{
@@ -111,7 +111,7 @@ app.get("/api/users/:id",(req,res)=>{
     });
 });
 
-app.delete("/api/posts/:id", (req,res)=>{
+app.delete("/api/posts/:id", async (req,res)=>{
     data.deletePostById(req.params.id).then((msg)=>{
         res.json({message: msg});
     }).catch((err)=>{
