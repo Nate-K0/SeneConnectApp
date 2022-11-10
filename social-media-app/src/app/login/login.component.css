@@ -30,7 +30,7 @@ body {
     text-align: center;
     border-radius: 16px;
     box-shadow: 0 0 10px rgba(0, 0, 0, .2);
-    animation: onloadanim 2s ease-in 0s 1 alternate forwards;
+    animation: onloadanim 0.6s ease-in 0s 1 alternate forwards;
 }
 
 @keyframes onloadanim {
