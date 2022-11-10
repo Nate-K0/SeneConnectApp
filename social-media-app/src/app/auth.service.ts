@@ -45,6 +45,6 @@ export class AuthService {
   }
 
   login(user: User): Observable<any> {
-    return this.http.post<any>('http://localhost:8080/api/login', user);
+    return this.http.post<any>('https://seneconnect-api.vercel.app/api/login', user);
   }
 }

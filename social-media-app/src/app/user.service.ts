@@ -11,10 +11,10 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getAllUsers(): Observable<User[]> {
-    return this.http.get<User[]>("http://localhost:8080/api/users");
+    return this.http.get<User[]>("https://seneconnect-api.vercel.app/api/users");
   }
 
   newUser(data: User): Observable<any> {
-    return this.http.post<any>(`http://localhost:8080/api/users`, data);
+    return this.http.post<any>(`https://seneconnect-api.vercel.app/api/users`, data);
   }
 }
