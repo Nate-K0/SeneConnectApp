@@ -30,14 +30,16 @@ export class AuthService {
     }
   }
 
+  public deleteToken(): void {
+    localStorage.removeItem('access_token');
+  }
+
   isAuthenticated(): boolean {
     const token = localStorage.getItem('access_token');
 
     if (token) {
-      console.log('token exists');
       return true;
     } else {
-      console.log('no token');
       return false;
     }
   }
