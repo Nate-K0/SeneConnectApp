@@ -20,14 +20,15 @@ export class LoginComponent implements OnInit {
   }
 
   handleLogin(form: NgForm): void {
-    this.loginUserSub =  this._authService.login(this.user).subscribe((message) => {
-      this._authService.setToken(message.token);
-      this.router.navigate(['/home']);
-    },
-    (error) => {
-      console.log(error);
-      this.warning = error.error.message;
-    })
+    this.loginUserSub = this._authService.login(this.user).subscribe(
+      (message) => {
+        this._authService.setToken(message.token);
+        this.router.navigate(['/home']);
+      },
+      (error) => {
+        this.warning = error.error.message;
+      }
+    );
   }
 
   ngOnDestroy() {

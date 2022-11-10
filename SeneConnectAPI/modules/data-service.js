@@ -70,18 +70,18 @@ module.exports = function(mongoDBConnectionString){
             return new Promise((resolve,reject)=>{
                 User.find({userName: data.userName}).limit(1).exec().then((user) => {
                     if (user.length == 0) {
-                        reject("No user with that username is registered")
+                        reject("No user with " + data.userName + " is registered")
                     } else {
                         bcrypt.compare(data.password, user[0].password).then((res) => {
                             if (res === true) {
                                 resolve(user[0]);
                             } else {
-                                reject("Incorrect password");
+                                reject("Incorrect password for user " + data.userName);
                             }
                         })
                     }
-                }).catch(() => {
-                    reject("No user with that username is registered");
+                }).catch((err) => {
+                    reject("No user with " + data.userName + " is registered");
                 })
             });
         },

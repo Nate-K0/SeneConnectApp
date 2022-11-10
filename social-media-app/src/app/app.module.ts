@@ -16,9 +16,11 @@ import { SignupComponent } from './signup/signup.component';
 import { AuthService } from './auth.service';
 import { UserService } from './user.service';
 import { PostService } from './post.service';
+import { InterceptTokenService } from './intercept-token.service';
+import { GuardAuthService } from './guard-auth.service';
 
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -53,7 +55,9 @@ import { MatSelectModule } from '@angular/material/select';
     MatIconModule,
     MatSelectModule
   ],
-  providers: [AuthService, UserService, PostService],
+  providers: [AuthService, UserService, PostService, 
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptTokenService, multi: true},
+    GuardAuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

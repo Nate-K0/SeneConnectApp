@@ -10,6 +10,37 @@ const dataService = require("./modules/data-service.js");
 const data = dataService(mongoDBConnectionString);
 const app = express();
 
+const jwt = require('jsonwebtoken');
+const passport = require("passport");
+const passportJWT = require("passport-jwt");
+
+var ExtractJwt = passportJWT.ExtractJwt;
+var JwtStrategy = passportJWT.Strategy;
+
+var jwtOptions = {};
+jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme("jwt");
+
+jwtOptions.secretOrKey = 'rTJrzG4!b5Cnq*M91l!6#QuYxfL^J&Ch!w7L$kis2QglSGOd0F';
+
+var strategy = new JwtStrategy(jwtOptions, function (jwt_payload, next) {
+    console.log('payload received', jwt_payload);
+
+    if (jwt_payload) {
+        next(null, { 
+            _id: jwt_payload._id,
+            email: jwt_payload.email,
+            userName: jwt_payload.userName, 
+            password: jwt_payload.password
+        }); 
+    } else {
+        next(null, false);
+    }
+});
+
+passport.use(strategy);
+
+app.use(passport.initialize());
+
 app.use(bodyParser.json());
 app.use(cors());
 
@@ -30,10 +61,19 @@ app.post("/api/users", (req,res)=>{
 });
 
 app.post("/api/login", (req,res)=>{
-    data.LoginUser(req.body).then((msg)=>{
-        res.json({message: msg});
+    data.LoginUser(req.body).then((user)=>{
+        var payload = { 
+            _id: user._id,
+            email: user.email,
+            userName: user.userName,
+            password: user.password
+        };
+        
+        var token = jwt.sign(payload, jwtOptions.secretOrKey);
+
+        res.json({message: "login successful", token: token});
     }).catch((err)=>{
-        res.json({error: `an error occurred: ${err}`});
+        res.status(422).json({message: err});
     });
 });
 
@@ -55,7 +95,7 @@ app.get("/api/users", (req,res) => {
     })
 });
 
-app.get("/api/posts/:id",(req,res)=>{
+app.get("/api/posts/:id", (req,res)=>{
     data.getPostById(req.params.id).then(data=>{
         res.json(data);
     }).catch((err)=>{

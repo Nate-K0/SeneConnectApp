@@ -6,14 +6,15 @@ import { SearchComponent } from './search/search.component';
 import { AccountComponent } from './account/account.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { GuardAuthService } from './guard-auth.service';
 
 const routes: Routes = [
   {path:'', redirectTo: '/home', pathMatch: 'full' },
-  {path:'home', component:HomeComponent},
+  {path:'home', component:HomeComponent, canActivate: [GuardAuthService]},
   {path:'login', component:LoginComponent},
   {path:'signup', component:SignupComponent},
-  {path:'search', component:SearchComponent},
-  {path:'account', component:AccountComponent},
+  {path:'search', component:SearchComponent, canActivate: [GuardAuthService]},
+  {path:'account', component:AccountComponent, canActivate: [GuardAuthService]},
   {path:'**', component:PageNotFoundComponent}
 ];
 
