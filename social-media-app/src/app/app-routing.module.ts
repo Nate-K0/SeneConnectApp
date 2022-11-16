@@ -7,10 +7,15 @@ import { AccountComponent } from './account/account.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { GuardAuthService } from './guard-auth.service';
+import { AdminusersComponent } from './adminusers/adminusers.component';
+import { AdminpostsComponent } from './adminposts/adminposts.component';
+import { GuardAdminAuthService } from './guard-admin-auth.service';
 
 const routes: Routes = [
   {path:'', redirectTo: '/home', pathMatch: 'full' },
   {path:'home', component:HomeComponent, canActivate: [GuardAuthService]},
+  {path:'admin/users', component:AdminusersComponent, canActivate: [GuardAdminAuthService]},
+  {path:'admin/posts', component:AdminpostsComponent, canActivate: [GuardAdminAuthService]},
   {path:'login', component:LoginComponent},
   {path:'signup', component:SignupComponent},
   {path:'search', component:SearchComponent, canActivate: [GuardAuthService]},

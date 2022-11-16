@@ -22,9 +22,13 @@ export class LoginComponent implements OnInit {
   handleLogin(form: NgForm): void {
     this.loginUserSub = this._authService.login(this.user).subscribe(
       (message) => {
-        console.log(message);
         this._authService.setToken(message.token);
-        this.router.navigate(['/home']);
+        this._authService.setIsAdmin(message.isAdmin);
+        if (message.isAdmin) {
+          this.router.navigate(['/admin/users']);
+        } else {
+          this.router.navigate(['/home']);
+        }
       },
       (error) => {
         this.warning = error.error.message;

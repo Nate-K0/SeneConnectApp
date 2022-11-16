@@ -1,0 +1,24 @@
+<br />
+<div class="container">
+    <div class="row" *ngFor="let user of allUsers">
+        <div class="col-md-12">
+            <table class="table table-hover">
+                <thead> 
+                    <tr>
+                        <th>Email</th> 
+                        <th>UserName</th>
+                        <th>Delete User</th>
+                    </tr> 
+                </thead> 
+                <tbody>
+                    <tr>
+                        <td>{{user.email}}</td>
+                        <td>{{user.userName}}</td>
+                        <td><a class="btn btn-success btn-sm pull-right">Delete User</a><br /><br /></td>
+                    </tr> 
+                </tbody>
+            </table> 
+        </div>
+    </div> 
+</div>
+<br />
