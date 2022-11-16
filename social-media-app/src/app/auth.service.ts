@@ -44,6 +44,10 @@ export class AuthService {
     }
   }
 
+  isAdmin() : boolean {
+    return false;
+  }
+
   login(user: User): Observable<any> {
     return this.http.post<any>('https://seneconnect-api.vercel.app/api/login', user);
   }

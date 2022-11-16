@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
   handleLogin(form: NgForm): void {
     this.loginUserSub = this._authService.login(this.user).subscribe(
       (message) => {
+        console.log(message);
         this._authService.setToken(message.token);
         this.router.navigate(['/home']);
       },
