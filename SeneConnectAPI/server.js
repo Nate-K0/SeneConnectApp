@@ -72,9 +72,15 @@ app.post("/api/login", async (req,res)=>{
         };
         
         var token = jwt.sign(payload, jwtOptions.secretOrKey);
+
         var isAdmin = false;
 
-        res.json({message: "login successful", token: token, isAdmin: isAdmin, user: user});
+        if (user.userName == "Admin") {
+            isAdmin = true;
+        }
+        
+
+        res.json({message: "login successful", token: token, isAdmin: isAdmin});
     }).catch((err)=>{
         res.status(422).json({message: err});
     });
