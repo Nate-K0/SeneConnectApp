@@ -9,6 +9,7 @@ import { User } from './User';
   providedIn: 'root'
 })
 export class AuthService {
+  isUserAdmin!: boolean;
 
   constructor(private http: HttpClient) { }
 
@@ -44,8 +45,12 @@ export class AuthService {
     }
   }
 
+  setIsAdmin(isAdmin: boolean): void {
+    this.isUserAdmin = isAdmin;
+  }
+
   isAdmin() : boolean {
-    return false;
+    return this.isUserAdmin;
   }
 
   login(user: User): Observable<any> {

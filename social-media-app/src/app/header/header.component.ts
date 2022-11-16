@@ -10,6 +10,7 @@ import { Router, Event, NavigationStart } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   public token: any;
+  isAdminLoggedIn!: boolean;
 
   constructor(private _authService: AuthService, private router: Router) { }
 
@@ -17,6 +18,7 @@ export class HeaderComponent implements OnInit {
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationStart) {
         this.token = this._authService.readToken();
+        this.isAdminLoggedIn = this._authService.isAdmin();
       }
     });
   }

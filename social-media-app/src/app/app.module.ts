@@ -28,6 +28,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
+import { AdminusersComponent } from './adminusers/adminusers.component';
+import { AdminpostsComponent } from './adminposts/adminposts.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { MatSelectModule } from '@angular/material/select';
     SearchComponent,
     AccountComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    AdminusersComponent,
+    AdminpostsComponent
   ],
   imports: [
     BrowserModule,
