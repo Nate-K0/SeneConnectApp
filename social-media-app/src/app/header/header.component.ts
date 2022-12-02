@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router, Event, NavigationStart } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 
 @Component({
@@ -23,9 +24,12 @@ export class HeaderComponent implements OnInit {
     });
   }
 
+  handleSearch(form: NgForm): void {
+      this.router.navigate(['/search']);
+  }
+
   handleLogout(): void {
     this.token = null;
     this._authService.deleteToken();
   }
-
 }
