@@ -49,9 +49,3 @@
 ::ng-deep.mat-input-element {
     caret-color: white !important;
 }
-
-@media only screen and (max-width: 1000px) {
-    ::ng-deep .mat-form-field {
-        visibility: hidden;
-    }
-}
