@@ -44,9 +44,9 @@ In general, we will all be team leaders
 | Nov. 7, 2022, 12:00 PM  | Prepare first sprint and deployment document<br>Connect to MongoDB database<br>Implement login and register page |
 | Nov. 14, 2022, 12:00 PM  | Completed Sprint 1 and preparing for Sprint 2 |
 | Nov. 21, 2022, 12:00 PM  | Continuing Sprint 2 requirements and implementation |
-| Nov. 28, 2022, 12:00 PM  | TBD |
-| Dec. 5, 2022, 12:00 PM  | TBD |
-| Dec. 12, 2022, 12:00 PM  | TBD |
+| Nov. 28, 2022, 12:00 PM  | Student Help meeting for Sprint 2 requirements |
+| Dec. 5, 2022, 12:00 PM  | Completed Sprint 2 |
+| Dec. 12, 2022, 12:00 PM  | Wrap-up discussion of next features to be implemented |
 
 ### Team Problems: 
 
