@@ -28,12 +28,12 @@ var strategy = new JwtStrategy(jwtOptions, function (jwt_payload, next) {
     console.log('payload received', jwt_payload);
 
     if (jwt_payload) {
-        next(null, { 
+        next(null, {
             _id: jwt_payload._id,
             email: jwt_payload.email,
-            userName: jwt_payload.userName, 
+            userName: jwt_payload.userName,
             password: jwt_payload.password
-        }); 
+        });
     } else {
         next(null, false);
     }
@@ -46,31 +46,31 @@ app.use(passport.initialize());
 app.use(bodyParser.json());
 app.use(cors());
 
-app.post("/api/posts", async (req,res)=>{
-    data.addNewPost(req.body).then((msg)=>{
-        res.json({message: msg});
-    }).catch((err)=>{
-        res.json({message: `an error occurred: ${err}`});
+app.post("/api/posts", async (req, res) => {
+    data.addNewPost(req.body).then((msg) => {
+        res.json({ message: msg });
+    }).catch((err) => {
+        res.json({ message: `an error occurred: ${err}` });
     });
 });
 
-app.post("/api/users", async (req,res)=>{
-    data.addNewUser(req.body).then((msg)=>{
-        res.json({message: msg});
-    }).catch((err)=>{
-        res.json({message: `an error occurred: ${err}`});
+app.post("/api/users", async (req, res) => {
+    data.addNewUser(req.body).then((msg) => {
+        res.json({ message: msg });
+    }).catch((err) => {
+        res.json({ message: `an error occurred: ${err}` });
     });
 });
 
-app.post("/api/login", async (req,res)=>{
-    data.LoginUser(req.body).then((user)=>{
-        var payload = { 
+app.post("/api/login", async (req, res) => {
+    data.LoginUser(req.body).then((user) => {
+        var payload = {
             _id: user._id,
             email: user.email,
             userName: user.userName,
             password: user.password
         };
-        
+
         var token = jwt.sign(payload, jwtOptions.secretOrKey);
 
         var isAdmin = false;
@@ -78,65 +78,73 @@ app.post("/api/login", async (req,res)=>{
         if (user.userName == "Admin") {
             isAdmin = true;
         }
-        
 
-        res.json({message: "login successful", token: token, isAdmin: isAdmin});
-    }).catch((err)=>{
-        res.status(422).json({message: err});
+
+        res.json({ message: "login successful", token: token, isAdmin: isAdmin });
+    }).catch((err) => {
+        res.status(422).json({ message: err });
     });
 });
 
-app.get("/api/posts", async (req,res) => {
-    data.getAllPosts(req.query.page, req.query.perPage).then((data)=>{
+app.get("/api/posts", async (req, res) => {
+    data.getAllPosts(req.query.page, req.query.perPage).then((data) => {
         res.json(data);
     })
-    .catch((err)=>{
-        res.json({message: `an error occurred: ${err}`});
-    })
+        .catch((err) => {
+            res.json({ message: `an error occurred: ${err}` });
+        })
 });
 
-app.get("/api/users", async (req,res) => {
-    data.getAllUsers().then((data)=>{
+app.get("/api/users", async (req, res) => {
+    data.getAllUsers().then((data) => {
         res.json(data);
     })
-    .catch((err)=>{
-        res.json({message: `an error occurred: ${err}`});
-    })
+        .catch((err) => {
+            res.json({ message: `an error occurred: ${err}` });
+        })
 });
 
-app.get("/api/posts/:id", async (req,res)=>{
-    data.getPostById(req.params.id).then(data=>{
+app.get("/api/posts/:id", async (req, res) => {
+    data.getPostById(req.params.id).then(data => {
         res.json(data);
-    }).catch((err)=>{
-        res.json({message: `an error occurred: ${err}`});
+    }).catch((err) => {
+        res.json({ message: `an error occurred: ${err}` });
     });
 });
 
-app.get("/api/users/:id", async (req,res)=>{
-    data.getUserById(req.params.id).then(data=>{
+app.get("/api/users/:id", async (req, res) => {
+    data.getUserById(req.params.id).then(data => {
         res.json(data);
-    }).catch((err)=>{
-        res.json({message: `an error occurred: ${err}`});
+    }).catch((err) => {
+        res.json({ message: `an error occurred: ${err}` });
     });
 });
 
-app.delete("/api/posts/:id", async (req,res)=>{
-    data.deletePostById(req.params.id).then((msg)=>{
-        res.json({message: msg});
-    }).catch((err)=>{
-        res.json({message: `an error occurred: ${err}`});
+app.get("/api/users/username/:userName", async (req, res) => {
+    data.getUserByUserName(req.params.userName).then(data => {
+        res.json(data);
+    }).catch((err) => {
+        res.json({ message: `an error occurred: ${err}` });
+    });
+});
+
+app.delete("/api/posts/:id", async (req, res) => {
+    data.deletePostById(req.params.id).then((msg) => {
+        res.json({ message: msg });
+    }).catch((err) => {
+        res.json({ message: `an error occurred: ${err}` });
     });
 });
 
 // Connect to the DB and start the server
 
-data.connect().then(()=>{
-    app.listen(HTTP_PORT, ()=>{console.log("API listening on: " + HTTP_PORT)});
+data.connect().then(() => {
+    app.listen(HTTP_PORT, () => { console.log("API listening on: " + HTTP_PORT) });
 })
-.catch((err)=>{
-    console.log("unable to start the server: " + err);
-    process.exit();
-});
+    .catch((err) => {
+        console.log("unable to start the server: " + err);
+        process.exit();
+    });
 //testing
 
 module.exports = app;
