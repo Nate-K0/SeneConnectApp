@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router, Event, NavigationStart } from '@angular/router';
-import { FormGroup, NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { SearchService } from '../search.service';
 
 @Component({
@@ -12,10 +12,16 @@ import { SearchService } from '../search.service';
 export class HeaderComponent implements OnInit {
   public token: any;
   isAdminLoggedIn!: boolean;
-  public usr: any;
-  searchForm: FormGroup | undefined;
+  form: FormGroup;
 
-  constructor(private _authService: AuthService, private router: Router, private _searchService: SearchService) { }
+  constructor(public fb: FormBuilder,
+    private _authService: AuthService,
+    private router: Router,
+    private _searchService: SearchService) {
+    this.form = this.fb.group({
+      username: ['']
+    });
+  }
 
   ngOnInit(): void {
     this.router.events.subscribe((event: Event) => {
@@ -26,21 +32,24 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  handleSearch(searchForm: NgForm): void {
-    this.usr = this._searchService.getUserByUserName(searchForm.value).subscribe(user => {
-      // TODO fix form input value not working
-      console.log("Input: " + searchForm.value);
-      console.log("User: " + user.userName);
-      this.router.navigate(['/search']);
-    })
+  handleSearch(): void {
+    var formData: any = new FormData();
+    formData.append('username', this.form.get('username')?.value);
+
+    this._searchService.getUserByUserName(formData).subscribe({
+      next: (response) => {
+        this.router.navigate(['/search']);
+        console.log(formData);
+        console.log(response);
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
   }
 
   handleLogout(): void {
     this.token = null;
     this._authService.deleteToken();
-  }
-
-  ngOnDestroy(): void {
-    if (this.usr) this.usr.unsubscribe();
   }
 }

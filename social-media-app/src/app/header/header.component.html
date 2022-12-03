@@ -7,14 +7,22 @@
         <a routerLink="/home" class="navbar-brand" routerLinkActive='active'>SeneConnect</a>
       </div>
       <!-- Navbar Search -->
-      <form class="search-form" #searchForm="ngForm" (ngSubmit)="handleSearch(searchForm)" *ngIf="token && !(isAdminLoggedIn)">
+        <form [formGroup]="form" (ngSubmit)="handleSearch()" *ngIf="token && !(isAdminLoggedIn)">
+            <mat-form-field>
+            <input #input matInput placeholder="Enter student username..." formControlName="username">
+          </mat-form-field>
+            <button mat-button (click)="input.value=''" [disabled]="input.value===''" style="background: transparent; border: none; color:white;">
+              <mat-icon matSuffix style="font-size: 20px">search</mat-icon>
+            </button>
+        </form>
+      <!-- <form [formGroup]="form" (ngSubmit)="handleSearch()" *ngIf="token && !(isAdminLoggedIn)">          
         <mat-form-field>
-          <input name="usernameInput" ngModel #usernameInput="ngModel" #input class="toolbar-search" type="search" matInput placeholder="Search for student...">
+          <input class="form-control" #input type="search" matInput placeholder="Enter student username..." formControlName="username">
         </mat-form-field>
-        <button mat-button (click)="input.value=''" type="submit" style="background: transparent; border: none; color: white;" [disabled]="usernameInput.value === ''">
+        <button mat-button (click)="input.value=''" type="submit" style="background: transparent; border: none; color: white;" [disabled]="input.value === ''">
           <mat-icon matSuffix style="font-size: 20px">search</mat-icon>
         </button>
-      </form>
+      </form> -->
       <!-- Navbar Menu -->
       <ul class="navbar-nav mr-auto">
         <li class="nav-item" *ngIf="token && isAdminLoggedIn"><a routerLink="/admin/users" class="nav-link "
