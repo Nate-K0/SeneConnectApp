@@ -7,12 +7,11 @@
         <a routerLink="/home" class="navbar-brand" routerLinkActive='active'>SeneConnect</a>
       </div>
       <!-- Navbar Search -->
-      <form class="search-form" #searchForm="ngForm" *ngIf="token && !(isAdminLoggedIn)"
-        (ngSubmit)="handleSearch(searchForm)">
+      <form class="search-form" #searchForm="ngForm" (ngSubmit)="handleSearch(searchForm)" *ngIf="token && !(isAdminLoggedIn)">
         <mat-form-field>
-          <input #usernameInput class="toolbar-search" type="search" matInput placeholder="Search for student...">
+          <input name="usernameInput" ngModel #usernameInput="ngModel" #input class="toolbar-search" type="search" matInput placeholder="Search for student...">
         </mat-form-field>
-        <button mat-button (click)="usernameInput.value=''" type="submit" style="background: transparent; border: none; color: white;" [disabled]="usernameInput.value === ''">
+        <button mat-button (click)="input.value=''" type="submit" style="background: transparent; border: none; color: white;" [disabled]="usernameInput.value === ''">
           <mat-icon matSuffix style="font-size: 20px">search</mat-icon>
         </button>
       </form>

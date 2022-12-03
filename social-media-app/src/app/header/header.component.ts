@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router, Event, NavigationStart } from '@angular/router';
-import { NgForm } from '@angular/forms';
+import { FormGroup, NgForm } from '@angular/forms';
 import { SearchService } from '../search.service';
 
 @Component({
@@ -12,7 +12,8 @@ import { SearchService } from '../search.service';
 export class HeaderComponent implements OnInit {
   public token: any;
   isAdminLoggedIn!: boolean;
-  usrs: any;
+  public usr: any;
+  searchForm: FormGroup | undefined;
 
   constructor(private _authService: AuthService, private router: Router, private _searchService: SearchService) { }
 
@@ -25,9 +26,11 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  handleSearch(form: NgForm): void {
-    this.usrs = this._searchService.getUserByUserName(form.value).subscribe(user => {
-      console.log("User: " + user);
+  handleSearch(searchForm: NgForm): void {
+    this.usr = this._searchService.getUserByUserName(searchForm.value).subscribe(user => {
+      // TODO fix form input value not working
+      console.log("Input: " + searchForm.value);
+      console.log("User: " + user.userName);
       this.router.navigate(['/search']);
     })
   }
@@ -38,6 +41,6 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    if (this.usrs) this.usrs.unsubscribe();
+    if (this.usr) this.usr.unsubscribe();
   }
 }
