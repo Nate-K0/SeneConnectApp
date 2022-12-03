@@ -126,6 +126,15 @@ module.exports = function(mongoDBConnectionString){
                 });
             });
         },
+        getUserByUserName: function(username){
+            return new Promise((resolve,reject)=>{
+                User.findOne({userName: username}).exec().then(user=>{
+                    resolve(user);
+                }).catch(err=>{
+                    reject(err);
+                });
+            });
+        },
 
         deletePostById: function(id){
             return new Promise((resolve,reject)=>{
