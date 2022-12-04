@@ -33,19 +33,19 @@ export class HeaderComponent implements OnInit {
   }
 
   handleSearch(): void {
-    var formData: any = new FormData();
-    formData.append('username', this.form.get('username')?.value);
+    var username = this.form.get('username')!.value;
 
-    this._searchService.getUserByUserName(formData).subscribe({
-      next: (response) => {
-        this.router.navigate(['/search']);
-        console.log(formData);
-        console.log(response);
-      },
-      error: (error) => {
-        console.log(error);
+    this._searchService.getUserByUserName(username).subscribe((response) => {
+      var res = JSON.stringify(response);
+
+      if (res != null) {
+        this._searchService.setLatestData(res);
+      } else {
+        this._searchService.setLatestData(null);
       }
     });
+
+    this.router.navigate(['/search']);
   }
 
   handleLogout(): void {

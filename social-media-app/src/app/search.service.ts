@@ -1,16 +1,20 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User } from './User';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SearchService {
+  data: EventEmitter<any> = new EventEmitter();
 
   constructor(private http: HttpClient) { }
 
-  getUserByUserName(user: User): Observable<any> {
-    return this.http.get<any>("https://seneconnect-api.vercel.app/api/users/username/" + user.userName);
+  getUserByUserName(username: any | undefined): Observable<any> {
+    return this.http.get<any>("https://seneconnect-api.vercel.app/api/users/username/" + username);
+  }
+
+  setLatestData(data: any) {
+    this.data.emit(data);
   }
 }
