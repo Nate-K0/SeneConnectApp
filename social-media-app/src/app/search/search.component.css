@@ -1,0 +1,30 @@
+.container {
+    padding: 40px 30px 30px 30px;
+    margin: 0 auto;
+}
+
+.container h1 {
+    font-weight: bold;
+}
+
+.container p {
+    font-size: 17px;
+    color: gray;
+}
+
+.container button {
+    background-color: red;
+    font-size: 17px;
+    text-decoration: none;
+    color: white;
+    padding: 10px 10px 10px 10px;
+    border: none;
+}
+
+.container button:hover {
+    background-color: darkred;
+}
+
+::ng-deep .mat-card {
+    max-width: 500px;
+}
