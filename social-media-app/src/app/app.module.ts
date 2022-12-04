@@ -19,7 +19,6 @@ import { PostService } from './post.service';
 import { InterceptTokenService } from './intercept-token.service';
 import { GuardAuthService } from './guard-auth.service';
 
-import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -27,9 +26,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { AdminusersComponent } from './adminusers/adminusers.component';
 import { AdminpostsComponent } from './adminposts/adminposts.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { AdminpostsComponent } from './adminposts/adminposts.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
     MatTableModule,
@@ -57,7 +59,8 @@ import { AdminpostsComponent } from './adminposts/adminposts.component';
     MatInputModule,
     MatInputModule,
     MatIconModule,
-    MatSelectModule
+    MatSelectModule,
+    MatCardModule
   ],
   providers: [AuthService, UserService, PostService, 
     { provide: HTTP_INTERCEPTORS, useClass: InterceptTokenService, multi: true},

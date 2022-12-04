@@ -1,0 +1,15 @@
+.container {
+    padding: 40px 30px 30px 30px;
+}
+
+.container button {
+    padding: 10px 10px 10px 10px;
+    font-size: 17px;
+    background-color: red;
+    color: white;
+    border: none;
+}
+
+.container button:hover {
+    background-color: darkred;
+}
