@@ -13,7 +13,7 @@
                     <tr>
                         <td>{{user.email}}</td>
                         <td>{{user.userName}}</td>
-                        <td><a class="btn btn-success btn-sm pull-right">Delete User</a><br /><br /></td>
+                        <td><a (click)="handleDelete(user._id)" class="btn btn-danger btn-sm pull-right">Delete User</a><br /><br /></td>
                     </tr> 
                 </tbody>
             </table> 

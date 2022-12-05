@@ -136,6 +136,14 @@ app.delete("/api/posts/:id", async (req, res) => {
     });
 });
 
+app.delete("/api/users/:id", async (req, res) => {
+    data.deleteUserById(req.params.id).then((msg) => {
+        res.json({ message: msg });
+    }).catch((err) => {
+        res.json({ message: `an error occurred: ${err}` });
+    });
+});
+
 // Connect to the DB and start the server
 
 data.connect().then(() => {

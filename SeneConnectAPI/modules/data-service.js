@@ -144,6 +144,16 @@ module.exports = function(mongoDBConnectionString){
                     reject(err);
                 });
             });
+        },
+
+        deleteUserById: function(id){
+            return new Promise((resolve,reject)=>{
+                User.deleteOne({_id: id}).exec().then(()=>{
+                    resolve(`user ${id} successfully deleted`)
+                }).catch(err=>{
+                    reject(err);
+                });
+            });
         }
     }
 }
