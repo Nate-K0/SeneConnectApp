@@ -31,6 +31,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { AdminusersComponent } from './adminusers/adminusers.component';
 import { AdminpostsComponent } from './adminposts/adminposts.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NewpostComponent } from './newpost/newpost.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     SignupComponent,
     AdminusersComponent,
-    AdminpostsComponent
+    AdminpostsComponent,
+    NewpostComponent
   ],
   imports: [
     BrowserModule,

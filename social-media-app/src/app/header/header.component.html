@@ -11,7 +11,7 @@
         <mat-form-field>
           <input #input matInput placeholder="Enter student username..." formControlName="username">
         </mat-form-field>
-        <button mat-button (click)="input.value=''" [disabled]="input.value===''"
+        <button mat-button [disabled]="this.input.value ===''"
           style="background: transparent; border: none; color:white;">
           <mat-icon matSuffix style="font-size: 20px">search</mat-icon>
         </button>
