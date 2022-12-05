@@ -1,5 +1,5 @@
 .navbar {
-    background-color: rgb(255, 52, 52) !important;
+    background-color: red !important;
     color: white;
     animation: downfromtop 0.7s ease-in 0s 1 alternate forwards;
 }
