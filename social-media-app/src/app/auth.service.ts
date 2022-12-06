@@ -9,8 +9,6 @@ import { User } from './User';
   providedIn: 'root'
 })
 export class AuthService {
-  isUserAdmin!: boolean;
-  username!: string;
 
   constructor(private http: HttpClient) { }
 
@@ -47,22 +45,18 @@ export class AuthService {
   }
 
   setIsAdmin(isAdmin: string): void {
-    // this.isUserAdmin = isAdmin;
     localStorage.setItem('admin', isAdmin);
   }
 
   isAdmin() : string | null {
-    // return this.isUserAdmin;
     return localStorage.getItem('admin');
   }
 
   setUsername(usName: string) : void {
-    // this.username = usName;
     localStorage.setItem('username', usName);
   }
 
   getUsername() : string | null {
-    // return this.username;
     return localStorage.getItem('username');
   }
 
