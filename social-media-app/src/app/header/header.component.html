@@ -7,7 +7,7 @@
         <a routerLink="/home" class="navbar-brand" routerLinkActive='active'>SeneConnect</a>
       </div>
       <!-- Navbar Search -->
-      <form [formGroup]="form" (ngSubmit)="handleSearch()" *ngIf="token && !(isAdminLoggedIn)">
+      <form [formGroup]="form" (ngSubmit)="handleSearch()" *ngIf="token && isAdminLoggedIn == 'no'">
         <mat-form-field>
           <input #input matInput placeholder="Enter student username..." formControlName="username">
         </mat-form-field>
@@ -18,9 +18,9 @@
       </form>
       <!-- Navbar Menu -->
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item" *ngIf="token && isAdminLoggedIn"><a routerLink="/admin/users" class="nav-link "
+        <li class="nav-item" *ngIf="token && isAdminLoggedIn == 'yes'"><a routerLink="/admin/users" class="nav-link "
             routerLinkActive='active'>Users</a></li>
-        <li class="nav-item" *ngIf="token && isAdminLoggedIn"><a routerLink="/admin/posts" class="nav-link "
+        <li class="nav-item" *ngIf="token && isAdminLoggedIn == 'yes'"><a routerLink="/admin/posts" class="nav-link "
             routerLinkActive='active'>Posts</a></li>
         <li class="nav-item" *ngIf="!(token)"><a routerLink="/login" class="nav-link "
             routerLinkActive='active'>Login</a></li>
@@ -29,7 +29,7 @@
         <!-- My Account should be visible only when logged in
           Login and Register buttons are hidden when logged in 
           Navbar contains Logout link -->
-        <li class="nav-item" *ngIf="token && !(isAdminLoggedIn)"><a routerLink="/account" class="nav-link "
+        <li class="nav-item" *ngIf="token && isAdminLoggedIn == 'no'"><a routerLink="/account" class="nav-link "
             routerLinkActive='active'>My Account</a></li>
         <li class="nav-item" *ngIf="token">
           <a routerLink="/login" (click)="handleLogout()" class="nav-link " routerLinkActive='active'>Logout</a>

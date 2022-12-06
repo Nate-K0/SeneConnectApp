@@ -23,10 +23,12 @@ export class LoginComponent implements OnInit {
     this.loginUserSub = this._authService.login(this.user).subscribe(
       (message) => {
         this._authService.setToken(message.token);
-        this._authService.setIsAdmin(message.isAdmin);
+        this._authService.setUsername(message.username);
         if (message.isAdmin) {
+          this._authService.setIsAdmin("yes");
           this.router.navigate(['/admin/users']);
         } else {
+          this._authService.setIsAdmin("no");
           this.router.navigate(['/home']);
         }
       },

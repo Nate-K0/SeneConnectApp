@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PostService } from '../post.service';
 import { Router } from '@angular/router';
 import { Post } from '../Post';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-newpost',
@@ -12,16 +13,16 @@ export class NewpostComponent implements OnInit {
   post: Post = new Post();
   psts: any;
 
-  constructor(private _postService : PostService, private _router : Router) { }
+  constructor(private _postService : PostService, private _router : Router, private _authService: AuthService) { }
 
   ngOnInit(): void {
     
   }
 
   formSubmit(): void {
-    this.psts.postDate = new Date().toLocaleDateString();
-    this.psts.postedBy = "BTI425 Student";
-    this.psts.likes = 0;
+    this.post.postDate = new Date().toLocaleDateString();
+    this.post.postedBy = this._authService.getUsername()!;
+    this.post.likes = 0;
     
     this.psts = this._postService.newPost(this.post).subscribe(() => this._router.navigate(['/home']));
   }

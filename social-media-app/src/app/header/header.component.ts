@@ -11,7 +11,7 @@ import { SearchService } from '../search.service';
 })
 export class HeaderComponent implements OnInit {
   public token: any;
-  isAdminLoggedIn!: boolean;
+  isAdminLoggedIn!: string;
   form: FormGroup;
  
   constructor(public fb: FormBuilder,
@@ -27,7 +27,7 @@ export class HeaderComponent implements OnInit {
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationStart) {
         this.token = this._authService.readToken();
-        this.isAdminLoggedIn = this._authService.isAdmin();
+        this.isAdminLoggedIn = this._authService.isAdmin()!;
       }
     });
   }
