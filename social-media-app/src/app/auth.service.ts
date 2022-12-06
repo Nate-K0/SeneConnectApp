@@ -10,6 +10,7 @@ import { User } from './User';
 })
 export class AuthService {
   isUserAdmin!: boolean;
+  username!: string;
 
   constructor(private http: HttpClient) { }
 
@@ -32,7 +33,7 @@ export class AuthService {
   }
 
   public deleteToken(): void {
-    localStorage.removeItem('access_token');
+    localStorage.clear();
   }
 
   isAuthenticated(): boolean {
@@ -45,12 +46,24 @@ export class AuthService {
     }
   }
 
-  setIsAdmin(isAdmin: boolean): void {
-    this.isUserAdmin = isAdmin;
+  setIsAdmin(isAdmin: string): void {
+    // this.isUserAdmin = isAdmin;
+    localStorage.setItem('admin', isAdmin);
   }
 
-  isAdmin() : boolean {
-    return this.isUserAdmin;
+  isAdmin() : string | null {
+    // return this.isUserAdmin;
+    return localStorage.getItem('admin');
+  }
+
+  setUsername(usName: string) : void {
+    // this.username = usName;
+    localStorage.setItem('username', usName);
+  }
+
+  getUsername() : string | null {
+    // return this.username;
+    return localStorage.getItem('username');
   }
 
   login(user: User): Observable<any> {

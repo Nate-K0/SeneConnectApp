@@ -15,7 +15,7 @@ export class GuardAdminAuthService implements CanActivate {
       return false;
     }
 
-    if (!this._authService.isAdmin()) {
+    if (this._authService.isAdmin() == "no") {
       this.router.navigate(['/home']);
       return false;
     }

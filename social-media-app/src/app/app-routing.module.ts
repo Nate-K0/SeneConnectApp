@@ -10,10 +10,12 @@ import { GuardAuthService } from './guard-auth.service';
 import { AdminusersComponent } from './adminusers/adminusers.component';
 import { AdminpostsComponent } from './adminposts/adminposts.component';
 import { GuardAdminAuthService } from './guard-admin-auth.service';
+import { NewpostComponent } from './newpost/newpost.component';
 
 const routes: Routes = [
   {path:'', redirectTo: '/home', pathMatch: 'full' },
   {path:'home', component:HomeComponent, canActivate: [GuardAuthService]},
+  {path:'newpost', component:NewpostComponent, canActivate: [GuardAuthService]},
   {path:'admin/users', component:AdminusersComponent, canActivate: [GuardAdminAuthService]},
   {path:'admin/posts', component:AdminpostsComponent, canActivate: [GuardAdminAuthService]},
   {path:'login', component:LoginComponent},
