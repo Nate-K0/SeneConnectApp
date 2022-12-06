@@ -7,7 +7,8 @@
             <footer class="post-footer d-flex align-items-center"><a routerLink="#" class="author d-flex align-items-center flex-wrap">
                 <div class="title"><span>{{post.postedBy}}</span></div></a>
                 <div class="likes"><span>Likes: {{post.likes}}</span></div>
-                <div class="likes" *ngIf="username == post.postedBy"><a (click)="handleDelete(post._id)" class="btn btn-danger btn-sm pull-right">Delete User</a></div>
+                <div class="likes" *ngIf="username == post.postedBy"><a (click)="handleDelete(post._id)" class="btn btn-danger btn-sm pull-right">Delete Post</a></div>
+                <div class="caption"><span>{{post.caption}}</span></div>
               <div class="date"><i class="icon-clock"></i> {{post.postDate | date:'mediumDate'}}</div>
               <div class="comments meta-last"><i class="icon-comment"></i>{{post.comments.length}}</div>
             </footer>
