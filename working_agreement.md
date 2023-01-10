@@ -47,6 +47,7 @@ In general, we will all be team leaders
 | Nov. 28, 2022, 12:00 PM  | Student Help meeting for Sprint 2 requirements |
 | Dec. 5, 2022, 12:00 PM  | Completed Sprint 2 |
 | Dec. 12, 2022, 12:00 PM  | Wrap-up discussion of next features to be implemented |
+| Jan. 10, 2023, 11:00 AM  | Discussed Sprint 3 and created a new milestone and project board |
 
 ### Team Problems: 
 
