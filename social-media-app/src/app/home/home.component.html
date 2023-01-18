@@ -1,25 +1,36 @@
 <div class="container">
-    <div class="row">
-        <div class="post col-xl-6" *ngFor="let post of posts">
-          <div class="post-thumbnail"><img src="{{post.featuredImage}}" alt="..." class="img-fluid" width="100px" height="100px"></div>
-
-          <div class="post-details">
-            <footer class="post-footer d-flex align-items-center"><a routerLink="#" class="author d-flex align-items-center flex-wrap">
-                <div class="title"><span>{{post.postedBy}}</span></div></a>
-                <div class="likes"><span>Likes: {{post.likes}}</span></div>
-                <div class="likes" *ngIf="username == post.postedBy"><a (click)="handleDelete(post._id)" class="btn btn-danger btn-sm pull-right">Delete Post</a></div>
-                <div class="caption"><span>{{post.caption}}</span></div>
-              <div class="date"><i class="icon-clock"></i> {{post.postDate | date:'mediumDate'}}</div>
-              <div class="comments meta-last"><i class="icon-comment"></i>{{post.comments.length}}</div>
-            </footer>
-          </div>
-          
-        </div>
+  <div class="new-post">
+    <a routerLink="/newpost">
+      <img src="../../assets/images/new-post.png" alt="New post img" width="100px" height="100px" />
+    </a>
+  </div>
+  <div class="row">
+    <div class="post col-xl-12 d-flex justify-content-center" *ngFor="let post of posts">
+      <div class="post-details">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>
+              <div class="post-thumbnail"><img src="{{post.featuredImage}}" alt="..." class="img-fluid" width="400px" height="400px"></div>
+            </mat-card-title>
+            <mat-card-subtitle>
+              <div class="title"><a href="#" style="text-decoration: none;">@{{post.postedBy}}</a></div>
+              <div><i class="fa fa-clock-o"></i> {{post.postDate | date:'mediumDate'}}</div><br>
+              <div class="caption">
+                <h3>{{post.caption}}</h3>
+              </div>
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-actions align="end">
+            <div class="likes"><a (click)="handleLike(post._id)" class="btn btn-lg">
+                <i class="fa fa-heart-o"></i> {{post.likes}}</a>
+            </div>
+            <div class="comments"><a (click)="addComment(post._id)" class="btn btn-lg">
+              <i class="fa fa-comment-o"></i> {{post.comments.length}}</a>
+            </div>
+            <div class="delete" *ngIf="username == post.postedBy"><a (click)="handleDelete(post._id)"
+                class="btn btn-lg btn-danger"><i class="fa fa-trash-o"></i> Delete Post</a></div>
+          </mat-card-actions>
+        </mat-card>
+      </div>
     </div>
-
-    <div class="new-post">
-        <a routerLink="/newpost">
-            <img src="../../assets/images/new-post.png" alt="New post img" width="100px" height="100px"/>
-        </a>
-    </div>
-</div>
+  </div>

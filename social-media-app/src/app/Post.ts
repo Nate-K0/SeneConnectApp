@@ -8,4 +8,5 @@ export class Post {
     postedBy!: string;
     comments!: Array<Comment>; 
     likes!: number;
+    likedBy!: Array<string>
 }

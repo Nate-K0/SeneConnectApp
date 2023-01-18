@@ -18,6 +18,10 @@ export class UserService {
     return this.http.post<any>(`https://seneconnect-api.vercel.app/api/users`, data);
   }
 
+  getUserById(id: string): Observable<any> {
+    return this.http.get<any>(`https://seneconnect-api.vercel.app/api/users/${id}`);
+  }
+
   deleteUserById(id: string): Observable<any> {
     return this.http.delete<any>(`https://seneconnect-api.vercel.app/api/users/${id}`);
   }
