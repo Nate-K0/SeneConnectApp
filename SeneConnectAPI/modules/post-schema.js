@@ -7,7 +7,8 @@ let postSchema = new Schema({
     caption: String,
     postedBy: String,
     comments: [{ author: String, comment: String, date: Date }],
-    likes: Number
+    likes: Number,
+    likedBy: [{username: String}]
 });
 
 module.exports = postSchema;

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Post } from './Post';
 import { HttpClient } from '@angular/common/http';
+import { User } from './User';
 
 const perPage:number = 20;
 
@@ -16,8 +17,8 @@ export class PostService {
     return this.http.get<Post[]>("https://seneconnect-api.vercel.app/api/posts?page="+page+"&perPage="+perPage);
   }
 
-  getPostbyId(id:number): Observable<Post> {
-    return this.http.get<Post>("https://seneconnect-api.vercel.app/api/posts/"+id);
+  getPostbyId(id: string): Observable<Post> {
+    return this.http.get<Post>(`https://seneconnect-api.vercel.app/api/posts/${id}`);
   }
 
   getAllPosts(): Observable<Post[]> {
@@ -29,6 +30,14 @@ export class PostService {
   }
 
   updatePostById(id: string, data: Post): Observable<any> {
+    return this.http.put<any>(`https://seneconnect-api.vercel.app/api/posts/${id}`, data);
+  }
+
+  likePostById(id: string, data: string): Observable<any> {
+    return this.http.put<any>(`https://seneconnect-api.vercel.app/api/posts/${id}`, data);
+  }
+
+  unlikePostById(id: string, data: string): Observable<any> {
     return this.http.put<any>(`https://seneconnect-api.vercel.app/api/posts/${id}`, data);
   }
 
