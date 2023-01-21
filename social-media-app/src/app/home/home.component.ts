@@ -49,8 +49,9 @@ export class HomeComponent implements OnInit {
 
   likePost(id: string): void {
     this._postService.likePostById(id, this.username).subscribe(() => {
-      this.updatePost(id,  this.post.likedBy.push(this.username));
       this.post.likedBy.push(this.username);
+      this.post.likes += 1;
+      this.updatePost(id, this.post);
     });
   }
 
@@ -66,8 +67,8 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  updatePost(id: string, postLikes: any): void {
-    this._postService.updatePostById(id, postLikes).subscribe(() => {
+  updatePost(id: string, post: Post): void {
+    this._postService.updatePostById(id, post).subscribe(() => {
     });
   }
 
