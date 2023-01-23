@@ -72,7 +72,10 @@ export class HomeComponent implements OnInit {
   }
 
   updatePost(id: string, post: Post): void {
-    this.psts = this._postService.updatePostById(id, post).subscribe(() => this.router.navigate(['/home']));
+    this.psts = this._postService.updatePostById(id, post).subscribe((message) => {
+      console.log(message);
+      this.router.navigate(['/home']);
+    });
   }
 
   handleDelete(id: string): void {
