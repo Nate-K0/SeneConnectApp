@@ -128,6 +128,14 @@ app.get("/api/users/username/:userName", async (req, res) => {
     });
 });
 
+app.put("/api/posts/:id", (req,res)=>{
+    data.updatePostById(req.body,req.params.id).then((msg)=>{
+        res.json({message: msg});
+    }).catch((err)=>{
+        res.json({message: `an error occurred: ${err}`});
+    });
+});
+
 app.delete("/api/posts/:id", async (req, res) => {
     data.deletePostById(req.params.id).then((msg) => {
         res.json({ message: msg });
