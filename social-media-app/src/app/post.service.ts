@@ -33,13 +33,13 @@ export class PostService {
     return this.http.put<any>(`https://seneconnect-api.vercel.app/api/posts/${id}`, data);
   }
 
-  likePostById(id: string, data: string): Observable<any> {
-    return this.http.put<any>(`https://seneconnect-api.vercel.app/api/posts/${id}`, data);
-  }
+  // likePostById(id: string, data: string): Observable<any> {
+  //   return this.http.put<any>(`https://seneconnect-api.vercel.app/api/posts/${id}`, data);
+  // }
 
-  unlikePostById(id: string, data: string): Observable<any> {
-    return this.http.put<any>(`https://seneconnect-api.vercel.app/api/posts/${id}`, data);
-  }
+  // unlikePostById(id: string, data: string): Observable<any> {
+  //   return this.http.put<any>(`https://seneconnect-api.vercel.app/api/posts/${id}`, data);
+  // }
 
   deletePostById(id: string): Observable<any> {
     return this.http.delete<any>(`https://seneconnect-api.vercel.app/api/posts/${id}`);

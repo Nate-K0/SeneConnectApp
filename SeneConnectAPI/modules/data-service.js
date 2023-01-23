@@ -136,6 +136,18 @@ module.exports = function(mongoDBConnectionString){
             });
         },
 
+        updatePostById: function(data, id){
+            return new Promise((resolve,reject)=>{
+                Post.updateOne({_id: id}, {
+                    $set: data
+                }).exec().then(()=>{
+                    resolve(`post ${id} successfully updated`)
+                }).catch(err=>{
+                    reject(err);
+                });
+            });
+        },
+
         deletePostById: function(id){
             return new Promise((resolve,reject)=>{
                 Post.deleteOne({_id: id}).exec().then(()=>{
