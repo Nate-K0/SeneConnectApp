@@ -36,7 +36,6 @@ export class HomeComponent implements OnInit {
     this._postService.getPostbyId(id).subscribe(data => {
       if (data != null) {
         this.post = data;
-        console.log("Response: " + JSON.stringify(this.post));
 
         if (this.post.likedBy.includes(this.username)) {
           this.unlikePost(id);
@@ -51,6 +50,7 @@ export class HomeComponent implements OnInit {
     // this._postService.likePostById(id, this.username).subscribe(() => {
       this.post.likedBy.push(this.username);
       this.post.likes += 1;
+      console.log(this.post.likedBy.toLocaleString() + this.post.likes.toLocaleString());
       this.updatePost(id, this.post);
     // });
   }
@@ -63,13 +63,16 @@ export class HomeComponent implements OnInit {
         this.post.likes -= 1;
       }
 
-      this.post.likedBy.pop();
+      var idx : number = this.post.likedBy.indexOf(this.username);
+      delete this.post.likedBy[idx];
+      // this.post.likedBy.pop();
+      console.log(this.post.likedBy.toLocaleString() + this.post.likes.toLocaleString());
       this.updatePost(id, this.post);
     // });
   }
 
   updatePost(id: string, post: Post): void {
-    this._postService.updatePostById(id, post).subscribe(() => {});
+    this.psts = this._postService.updatePostById(id, post).subscribe(() => this.router.navigate(['/home']));
   }
 
   handleDelete(id: string): void {
