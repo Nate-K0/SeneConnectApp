@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
     this._postService.getPostbyId(id).subscribe(data => {
       if (data != null) {
         this.post = data;
-
+        
         if (this.post.likedBy.includes(this.username)) {
           this.unlikePost(id);
         } else {
