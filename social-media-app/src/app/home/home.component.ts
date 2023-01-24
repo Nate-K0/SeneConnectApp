@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   post !: Post;
   psts: any;
   username !: string;
+  windowScrolled = false;
 
   constructor(private _postService: PostService, private router: Router, private _authService: AuthService) {
   }
@@ -26,6 +27,14 @@ export class HomeComponent implements OnInit {
     });
 
     this.username = this._authService.getUsername()!;
+
+    window.addEventListener('scroll', () => {
+      this.windowScrolled = window.pageYOffset !== 0;
+    });
+  }
+
+  scrollToTop(): void {
+    window.scrollTo(0, 0);
   }
 
   addComment(id: string) : void {
@@ -65,13 +74,11 @@ export class HomeComponent implements OnInit {
 
       var idx : number = this.post.likedBy.indexOf(this.username);
       delete this.post.likedBy[idx];
-      // this.post.likedBy.pop();
       this.updatePost(id, this.post);
   }
 
   updatePost(id: string, post: Post): void {
     this.psts = this._postService.updatePostById(id, post).subscribe((message) => {
-      console.log(message);
       this.router.navigate(['/home']);
     });
   }
