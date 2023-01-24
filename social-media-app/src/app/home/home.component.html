@@ -21,8 +21,13 @@
             </mat-card-subtitle>
           </mat-card-header>
           <mat-card-actions align="end">
-            <div class="likes"><a (click)="handleLike(post._id)" class="btn btn-lg">
+            <div class="likes">
+              <a (click)="handleLike(post._id)" class="btn btn-lg" *ngIf="post.likedBy.includes(username)">
+                <i class="fa fa-heart" style='color: red'></i> {{post.likes}}</a>
+
+              <a (click)="handleLike(post._id)" class="btn btn-lg" *ngIf="!post.likedBy.includes(username)">
                 <i class="fa fa-heart-o"></i> {{post.likes}}</a>
+
             </div>
             <div class="comments"><a (click)="addComment(post._id)" class="btn btn-lg">
               <i class="fa fa-comment-o"></i> {{post.comments.length}}</a>
