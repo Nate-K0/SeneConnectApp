@@ -36,11 +36,15 @@ export class HomeComponent implements OnInit {
     this._postService.getPostbyId(id).subscribe(data => {
       if (data != null) {
         this.post = data;
-        
-        if (this.post.likedBy.includes(this.username)) {
-          this.unlikePost(id);
-        } else {
+
+        if (this.post.likedBy.length == 0) {
           this.likePost(id);
+        } else {
+          if (this.post.likedBy.includes(this.username)) {
+            this.unlikePost(id);
+          } else {
+            this.likePost(id);
+          }
         }
       }
     });
@@ -50,7 +54,6 @@ export class HomeComponent implements OnInit {
     // this._postService.likePostById(id, this.username).subscribe(() => {
       this.post.likedBy.push(this.username);
       this.post.likes += 1;
-      console.log(this.post.likedBy.toLocaleString() + this.post.likes.toLocaleString());
       this.updatePost(id, this.post);
     // });
   }
@@ -66,7 +69,6 @@ export class HomeComponent implements OnInit {
       var idx : number = this.post.likedBy.indexOf(this.username);
       delete this.post.likedBy[idx];
       // this.post.likedBy.pop();
-      console.log(this.post.likedBy.toLocaleString() + this.post.likes.toLocaleString());
       this.updatePost(id, this.post);
     // });
   }
