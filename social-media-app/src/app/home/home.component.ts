@@ -51,15 +51,12 @@ export class HomeComponent implements OnInit {
   }
 
   likePost(id: string): void {
-    // this._postService.likePostById(id, this.username).subscribe(() => {
       this.post.likedBy.push(this.username);
       this.post.likes += 1;
       this.updatePost(id, this.post);
-    // });
   }
 
   unlikePost(id: string): void {
-    // this._postService.unlikePostById(id, this.username).subscribe(() => {
       if (this.post.likes < 1) {
         this.post.likes = 0;
       } else {
@@ -70,7 +67,6 @@ export class HomeComponent implements OnInit {
       delete this.post.likedBy[idx];
       // this.post.likedBy.pop();
       this.updatePost(id, this.post);
-    // });
   }
 
   updatePost(id: string, post: Post): void {
