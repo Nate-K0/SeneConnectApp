@@ -130,9 +130,9 @@ app.get("/api/users/username/:userName", async (req, res) => {
 
 app.put("/api/posts/:id", (req,res)=>{
     data.updatePostById(req.body,req.params.id).then((msg)=>{
-        res.json({message: msg, body: req.body, params: req.params.id});
+        res.json({message: msg});
     }).catch((err)=>{
-        res.json({message: `an error occurred: ${err}`});
+        res.json({message: `an error occurred: ${err}`, body: req.body, params: req.params.id});
     });
 });
 
