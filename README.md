@@ -14,3 +14,8 @@ This service will be created using Node.js which will be supported by a MongoDB 
 | Database admin | Nathan Kenopic, Tony Deleanu, Tom Schwartz|
 
 We prefer sharing the tasks as a group instead of splitting the work amongst each group member. This mitigates the issue of delays and fixing bugs or other problems later than anticipated.
+
+
+## Scan this QR Code to go to SeneConnect!
+
+![seneconnect](https://user-images.githubusercontent.com/100534071/214337392-ed794438-599a-4b8b-bee3-8448a5fe6908.png)
