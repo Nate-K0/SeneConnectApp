@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="post col-xl-12 d-flex justify-content-center" *ngFor="let post of posts">
+    <div class="post d-flex justify-content-center" *ngFor="let post of posts">
       <div class="post-details">
         <mat-card>
           <mat-card-header>
@@ -38,5 +38,4 @@
   <div class="to-top" (click)="scrollToTop()" [ngClass]="{ 'show-scrollTop': windowScrolled }">
     <i class="fa fa-arrow-up"></i>
   </div>
-
 </div>
