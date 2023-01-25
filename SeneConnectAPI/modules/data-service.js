@@ -62,7 +62,7 @@ module.exports = function(mongoDBConnectionString){
                         } else {
                             reject("Username already taken");
                         }
-                    })
+                    }).catch(err=>reject(err));
                 }).catch(err=>reject(err));
             });
         },

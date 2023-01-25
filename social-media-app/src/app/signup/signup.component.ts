@@ -12,6 +12,7 @@ export class SignupComponent implements OnInit {
   user: User = new User();
   tags!: string;
   newUserSub: any;
+  public warning:string = "";
 
   constructor(private _userService : UserService, private _router : Router) {  }
 
@@ -19,8 +20,13 @@ export class SignupComponent implements OnInit {
   }
 
   formSubmit(): void {
-      this.newUserSub = this._userService.newUser(this.user).subscribe(() => {
+      this.newUserSub = this._userService.newUser(this.user).subscribe(
+        (message) => {
+        // console.log(message);
         this._router.navigate(['/login']);
+      },
+      (error) => {
+        this.warning = error.error.message;
       });
   }
 
