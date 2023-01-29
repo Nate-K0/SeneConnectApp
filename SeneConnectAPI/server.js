@@ -58,7 +58,14 @@ app.post("/api/users", async (req, res) => {
     data.addNewUser(req.body).then((msg) => {
         res.json({ message: msg });
     }).catch((err) => {
-        // res.json({ error: `an error occurred: ${err}` });
+        res.status(422).json({ message: `an error occurred: ${err}` });
+    });
+});
+
+app.post("/api/profiles", async (req, res) => {
+    data.addNewProfile(req.body).then((msg) => {
+        res.json({ message: msg });
+    }).catch((err) => {
         res.status(422).json({ message: `an error occurred: ${err}` });
     });
 });
