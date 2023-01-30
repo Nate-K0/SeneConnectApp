@@ -25,6 +25,6 @@
     background-color: darkred;
 }
 
-::ng-deep .mat-card {
-    max-width: 500px;
+mat-card {
+    width: 600px;
 }
