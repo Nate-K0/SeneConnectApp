@@ -30,4 +30,8 @@ export class UserService {
   newProfile(data: Profile): Observable<any> {
     return this.http.post<any>(`https://seneconnect-api.vercel.app/api/profiles`, data);
   }
+
+  getProfileByUsername(username: string): Observable<any> {
+    return this.http.get<any>(`https://seneconnect-api.vercel.app/api/profiles/${username}`);
+  }
 }

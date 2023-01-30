@@ -128,6 +128,14 @@ app.get("/api/users/:id", async (req, res) => {
     });
 });
 
+app.get("/api/profiles/:userName", async (req, res) => {
+    data.getProfileByUsername(req.params.userName).then(data => {
+        res.json(data);
+    }).catch((err) => {
+        res.json({ message: `an error occurred: ${err}` });
+    });
+});
+
 app.get("/api/users/username/:userName", async (req, res) => {
     data.getUserByUserName(req.params.userName).then(data => {
         res.json(data);
