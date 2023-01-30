@@ -1,19 +1,24 @@
 <br />
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
+        <div class="d-flex justify-content-center">
             <form (ngSubmit)="formSubmit()">
-                <div class="form-group">
-                    <label>Image (URL)</label>
-                    <input type="text" class="form-control" id="featuredImage" name="featuredImage" [(ngModel)]="post.featuredImage">
-                </div>
-                <div class="form-group">
-                    <label>Caption</label>
-                    <input type="text" class="form-control" id="caption" name="caption" [(ngModel)]="post.caption">
-                </div>
-                <div class="pull-right">
-                    <button type="submit" class="btn btn-success btn-sm">Add Post</button>
-                </div>
+                <mat-card>
+                    <div class="form-group">
+                        <label>Image</label>
+                        <input type="text" placeholder="File or URL" class="form-control" id="featuredImage" name="featuredImage" [(ngModel)]="post.featuredImage">
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label>Caption</label>
+                        <input type="text" placeholder="Example text" class="form-control" id="caption" name="caption" [(ngModel)]="post.caption">
+                    </div>
+                    <mat-card-actions align="end">
+                        <div class="pull-right">
+                            <button type="submit" class="btn btn-success btn-sm">Add Post</button>
+                        </div>
+                    </mat-card-actions>
+                </mat-card>
             </form>
         </div>
     </div>
