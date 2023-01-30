@@ -143,6 +143,15 @@ module.exports = function(mongoDBConnectionString){
                 });
             });
         },
+        getProfileByUsername: function(username){
+            return new Promise((resolve,reject)=>{
+                Profile.findOne({userName: username}).exec().then(user=>{
+                    resolve(user)
+                }).catch(err=>{
+                    reject(err);
+                });
+            });
+        },
         getUserByUserName: function(username){
             return new Promise((resolve,reject)=>{
                 User.findOne({userName: username}).exec().then(user=>{
