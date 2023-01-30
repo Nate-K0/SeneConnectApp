@@ -20,6 +20,10 @@
                 <input type="password" id="password" name="password" placeholder="Enter password" [(ngModel)]="user.password" required>
             </div>
 
+            <div class="alert alert-danger" *ngIf="warning">
+                {{warning}}
+            </div>
+
             <input type="submit" value="Register">
         </form>
     </div>

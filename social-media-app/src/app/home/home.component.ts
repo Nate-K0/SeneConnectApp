@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   post !: Post;
   psts: any;
   username !: string;
+  windowScrolled = false;
 
   constructor(private _postService: PostService, private router: Router, private _authService: AuthService) {
   }
@@ -26,6 +27,14 @@ export class HomeComponent implements OnInit {
     });
 
     this.username = this._authService.getUsername()!;
+
+    window.addEventListener('scroll', () => {
+      this.windowScrolled = window.pageYOffset !== 0;
+    });
+  }
+
+  scrollToTop(): void {
+    window.scrollTo(0, 0);
   }
 
   addComment(id: string) : void {
@@ -36,40 +45,42 @@ export class HomeComponent implements OnInit {
     this._postService.getPostbyId(id).subscribe(data => {
       if (data != null) {
         this.post = data;
-        console.log("Response: " + JSON.stringify(this.post));
 
-        if (this.post.likedBy.includes(this.username)) {
-          this.unlikePost(id);
-        } else {
+        if (this.post.likedBy.length == 0) {
           this.likePost(id);
+        } else {
+          if (this.post.likedBy.includes(this.username)) {
+            this.unlikePost(id);
+          } else {
+            this.likePost(id);
+          }
         }
       }
     });
   }
 
   likePost(id: string): void {
-    // this._postService.likePostById(id, this.username).subscribe(() => {
       this.post.likedBy.push(this.username);
       this.post.likes += 1;
       this.updatePost(id, this.post);
-    // });
   }
 
   unlikePost(id: string): void {
-    // this._postService.unlikePostById(id, this.username).subscribe(() => {
       if (this.post.likes < 1) {
         this.post.likes = 0;
       } else {
         this.post.likes -= 1;
       }
 
-      this.post.likedBy.pop();
+      var idx : number = this.post.likedBy.indexOf(this.username);
+      delete this.post.likedBy[idx];
       this.updatePost(id, this.post);
-    // });
   }
 
   updatePost(id: string, post: Post): void {
-    this._postService.updatePostById(id, post).subscribe(() => {});
+    this.psts = this._postService.updatePostById(id, post).subscribe((message) => {
+      this.router.navigate(['/home']);
+    });
   }
 
   handleDelete(id: string): void {

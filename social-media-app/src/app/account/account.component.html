@@ -1,3 +1,14 @@
-<div class="container">
-    <p>My account works!</p>
+<div class="home-container">
+    <span class="home-text">{{profile.bio}}</span>
+    <h1 class="home-text1">{{profile.userName}}</h1>
+    <img
+      alt="image"
+      src={{profile.profilePic}}
+      class="home-image"
+    />
+    <h1 class="home-text2">
+      <span>My Posts</span>
+    </h1>
+    <h1 class="home-text5">{{profile.followers}} Followers</h1>
+    <a href="https://example.com" class="home-link">Edit Profile</a>
 </div>

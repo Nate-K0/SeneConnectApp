@@ -58,7 +58,15 @@ app.post("/api/users", async (req, res) => {
     data.addNewUser(req.body).then((msg) => {
         res.json({ message: msg });
     }).catch((err) => {
-        res.json({ message: `an error occurred: ${err}` });
+        res.status(422).json({ message: `an error occurred: ${err}` });
+    });
+});
+
+app.post("/api/profiles", async (req, res) => {
+    data.addNewProfile(req.body).then((msg) => {
+        res.json({ message: msg });
+    }).catch((err) => {
+        res.status(422).json({ message: `an error occurred: ${err}` });
     });
 });
 
@@ -120,11 +128,27 @@ app.get("/api/users/:id", async (req, res) => {
     });
 });
 
+app.get("/api/profiles/:userName", async (req, res) => {
+    data.getProfileByUsername(req.params.userName).then(data => {
+        res.json(data);
+    }).catch((err) => {
+        res.json({ message: `an error occurred: ${err}` });
+    });
+});
+
 app.get("/api/users/username/:userName", async (req, res) => {
     data.getUserByUserName(req.params.userName).then(data => {
         res.json(data);
     }).catch((err) => {
         res.json({ message: `an error occurred: ${err}` });
+    });
+});
+
+app.put("/api/posts/:id", (req,res)=>{
+    data.updatePostById(req.body,req.params.id).then((msg)=>{
+        res.json({message: msg});
+    }).catch((err)=>{
+        res.json({message: `an error occurred: ${err}`, body: req.body, params: req.params.id});
     });
 });
 

@@ -7,11 +7,13 @@ mongoose.Promise = global.Promise; // Added to get around the deprecation warnin
 // Load the schemas
 const postSchema = require('./post-schema.js');
 const userSchema = require('./user-schema.js');
+const profileSchema = require('./profile_schema.js');
 
 module.exports = function(mongoDBConnectionString){
 
     let Post; // defined on connection to the new db instance
     let User;
+    let Profile;
 
     return {
         connect: function(){
@@ -25,6 +27,7 @@ module.exports = function(mongoDBConnectionString){
                 db.once('open', ()=>{
                     Post = db.model("Post", postSchema);
                     User = db.model("User", userSchema);
+                    Profile = db.model("Profile", profileSchema);
                     resolve();
                 });
             });
@@ -62,8 +65,22 @@ module.exports = function(mongoDBConnectionString){
                         } else {
                             reject("Username already taken");
                         }
-                    })
+                    }).catch(err=>reject(err));
                 }).catch(err=>reject(err));
+            });
+        },
+        addNewProfile: function(data){
+            return new Promise((resolve,reject)=>{
+
+                let newProfile = new Profile(data);
+
+                newProfile.save((err) => {
+                    if(err) {
+                        reject(err);
+                    } else {
+                        resolve(`new profile: ${newProfile._id} successfully added`);
+                    }
+                });
             });
         },
         LoginUser: function(data){
@@ -126,10 +143,31 @@ module.exports = function(mongoDBConnectionString){
                 });
             });
         },
+        getProfileByUsername: function(username){
+            return new Promise((resolve,reject)=>{
+                Profile.findOne({userName: username}).exec().then(user=>{
+                    resolve(user)
+                }).catch(err=>{
+                    reject(err);
+                });
+            });
+        },
         getUserByUserName: function(username){
             return new Promise((resolve,reject)=>{
                 User.findOne({userName: username}).exec().then(user=>{
                     resolve(user);
+                }).catch(err=>{
+                    reject(err);
+                });
+            });
+        },
+
+        updatePostById: function(data, id){
+            return new Promise((resolve,reject)=>{
+                Post.updateOne({_id: id}, {
+                    $set: data
+                }).exec().then(()=>{
+                    resolve(`post ${id} successfully updated`)
                 }).catch(err=>{
                     reject(err);
                 });
