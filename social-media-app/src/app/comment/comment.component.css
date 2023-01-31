@@ -1,0 +1,19 @@
+.comment-block {
+    border: 1px solid black;
+    border-radius: 1px;
+}
+
+.comment-author {
+    left: 10px;
+    top: 5px;
+}
+
+.comment-date {
+    left: 50px;
+    top: 5px;
+}
+
+.comment-text {
+    left: 10px;
+    top: 50px;
+}

@@ -33,6 +33,7 @@ import { AdminusersComponent } from './adminusers/adminusers.component';
 import { AdminpostsComponent } from './adminposts/adminposts.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NewpostComponent } from './newpost/newpost.component';
+import { CommentComponent } from './comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { NewpostComponent } from './newpost/newpost.component';
     SignupComponent,
     AdminusersComponent,
     AdminpostsComponent,
-    NewpostComponent
+    NewpostComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,

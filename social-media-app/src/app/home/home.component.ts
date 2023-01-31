@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
   }
 
   addComment(id: string) : void {
-
+    this.router.navigate(['/comment', id]);
   }
 
   handleLike(id: string): void {
@@ -84,7 +84,9 @@ export class HomeComponent implements OnInit {
   }
 
   handleDelete(id: string): void {
-    this.psts = this._postService.deletePostById(id).subscribe(() => this.router.navigate(['/home']))
+    this.psts = this._postService.deletePostById(id).subscribe(() => {
+      this.router.navigate(['/home'])
+    })
   }
 
   ngOnDestroy(): void {
