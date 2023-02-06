@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   windowScrolled = false;
 
   constructor(private _postService: PostService, private router: Router, private _authService: AuthService) {
+    router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
 
   ngOnInit(): void {
