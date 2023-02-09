@@ -34,4 +34,8 @@ export class UserService {
   getProfileByUsername(username: string): Observable<any> {
     return this.http.get<any>(`https://seneconnect-api.vercel.app/api/profiles/${username}`);
   }
+
+  updateProfileById(id: string, data: Profile): Observable<any> {
+    return this.http.put<any>(`https://seneconnect-api.vercel.app/api/profiles/${id}`, data);
+  }
 }

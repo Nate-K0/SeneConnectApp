@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { Profile } from '../Profile';
 import { UserService } from '../user.service';
@@ -13,7 +14,7 @@ export class AccountComponent implements OnInit {
   prfl: any;
   username !: string;
 
-  constructor(private _userService: UserService, private _authService: AuthService) { }
+  constructor(private _userService: UserService, private _authService: AuthService, private router : Router) { }
 
   ngOnInit(): void {
     this.username = this._authService.getUsername()!;
@@ -25,4 +26,7 @@ export class AccountComponent implements OnInit {
     });
   }
 
+  editProfile(e:Event,id: any) : void {
+    this.router.navigate(['/editprofile', id]);
+  }
 }
