@@ -5,7 +5,7 @@ let profileSchema = new Schema({
     userName: String,
     profilePic: String,
     bio: String,
-    followers: number,
+    followers: Number,
     followedBy: [String],
     following: [String]
 });
