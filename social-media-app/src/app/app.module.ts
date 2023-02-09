@@ -34,6 +34,7 @@ import { AdminpostsComponent } from './adminposts/adminposts.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NewpostComponent } from './newpost/newpost.component';
 import { CommentComponent } from './comment/comment.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { CommentComponent } from './comment/comment.component';
     AdminusersComponent,
     AdminpostsComponent,
     NewpostComponent,
-    CommentComponent
+    CommentComponent,
+    EditProfileComponent,
   ],
   imports: [
     BrowserModule,
