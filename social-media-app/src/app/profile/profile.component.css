@@ -53,7 +53,9 @@
   }
   
   .followButton {
-    top: 95px;
-    right: 410px;
+    top: 145px;
+    right: 380px;
+    border-radius: 3px;
+    background-color: red;
     position: absolute;
   }
