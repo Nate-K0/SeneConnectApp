@@ -35,6 +35,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NewpostComponent } from './newpost/newpost.component';
 import { CommentComponent } from './comment/comment.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
     NewpostComponent,
     CommentComponent,
     EditProfileComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

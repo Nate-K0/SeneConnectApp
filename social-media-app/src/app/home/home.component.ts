@@ -38,6 +38,14 @@ export class HomeComponent implements OnInit {
     window.scrollTo(0, 0);
   }
 
+  viewProfile(username: string) : void {
+    if (this.username == username) {
+      this.router.navigate(['/profile']);
+    } else {
+      this.router.navigate(['/profile', username]);
+    }
+  }
+
   addComment(id: string) : void {
     this.router.navigate(['/comment', id]);
   }

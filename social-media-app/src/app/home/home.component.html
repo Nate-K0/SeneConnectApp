@@ -8,7 +8,7 @@
               <div class="post-thumbnail"><img src="{{post.featuredImage}}" alt="..." class="img-fluid" width="400px" height="400px"></div>
             </mat-card-title>
             <mat-card-subtitle>
-              <div class="title"><a href="#" style="text-decoration: none;">@{{post.postedBy}}</a></div>
+              <div class="title"><a (click)="viewProfile(post.postedBy)" style="text-decoration: none;">@{{post.postedBy}}</a></div>
               <div><i class="fa fa-clock-o"></i> {{post.postDate | date:'mediumDate'}}</div><br>
               <div class="caption">
                 <h3>{{post.caption}}</h3>

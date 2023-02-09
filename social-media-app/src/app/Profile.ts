@@ -3,7 +3,7 @@ export class Profile {
     userName!: string;
     profilePic!: string;
     bio!: string;
-    followers!: Number;
+    followers!: number;
     followedBy!: Array<string>;
     following!: Array<string>;
 }
