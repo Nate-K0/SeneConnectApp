@@ -13,6 +13,7 @@ import { GuardAdminAuthService } from './guard-admin-auth.service';
 import { NewpostComponent } from './newpost/newpost.component';
 import { CommentComponent } from './comment/comment.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {path:'', redirectTo: '/home', pathMatch: 'full' },
@@ -26,6 +27,7 @@ const routes: Routes = [
   {path:'search', component:SearchComponent, canActivate: [GuardAuthService]},
   {path:'profile', component:AccountComponent, canActivate: [GuardAuthService]},
   {path:'editprofile/:id', component:EditProfileComponent, canActivate: [GuardAuthService]},
+  {path:'profile/:username', component:ProfileComponent, canActivate: [GuardAuthService]},
   {path:'**', component:PageNotFoundComponent}
 ];
 
