@@ -1,3 +1,22 @@
 <div class="container">
-    <p>Admin posts works!</p>
+    <div class="row" *ngFor="let post of allPosts">
+        <div class="col-md-12">
+            <table class="table table-hover">
+                <thead> 
+                    <tr>
+                        <th>ID</th> 
+                        <th>Posted By</th>
+                        <th>Delete Post</th>
+                    </tr>
+                </thead> 
+                <tbody>
+                    <tr>
+                        <td>{{post._id}}</td>
+                        <td>{{post.postedBy}}</td>
+                        <td><a (click)="handleDelete(post._id)" class="btn btn-danger btn-sm pull-right">Delete Post</a><br /><br /></td>
+                    </tr> 
+                </tbody>
+            </table> 
+        </div>
+    </div> 
 </div>
