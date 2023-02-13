@@ -12,7 +12,9 @@ export class AdminusersComponent implements OnInit {
   allUsers: Array<User> = [];
   usrs: any;
 
-  constructor(private _userService: UserService, private router : Router) { }
+  constructor(private _userService: UserService, private router : Router) {
+    router.routeReuseStrategy.shouldReuseRoute = () => false;
+   }
 
   ngOnInit(): void {
     this.usrs = this._userService.getAllUsers().subscribe(user => {

@@ -12,7 +12,9 @@ export class AdminpostsComponent implements OnInit {
   allPosts: Array<Post> = [];
   psts: any;
 
-  constructor(private _postService: PostService, private router : Router) { }
+  constructor(private _postService: PostService, private router : Router) {
+    router.routeReuseStrategy.shouldReuseRoute = () => false;
+   }
 
   ngOnInit(): void {
     this.psts = this._postService.getAllPosts().subscribe(post => {
