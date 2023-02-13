@@ -62,13 +62,12 @@
 
           <a (click)="handleLike(post._id)" class="btn btn-lg" *ngIf="!post.likedBy.includes(username)">
             <i class="fa fa-heart-o"></i> {{post.likes}}</a>
-
         </div>
         <div class="comments"><a (click)="addComment(post._id)" class="btn btn-lg">
           <i class="fa fa-comment-o"></i> {{post.comments.length}}</a>
         </div>
-        <div class="delete" *ngIf="username == post.postedBy"><a (click)="handleDelete(post._id)"
-            class="btn btn-lg btn-danger"><i class="fa fa-trash-o"></i> Delete Post</a>
+        <div class="delete w-50" *ngIf="username == post.postedBy"><a (click)="handleDelete(post._id)"
+            class="btn btn-lg btn-danger"><i class="fa fa-trash-o"></i></a>
         </div>
       </div>
     </div>
