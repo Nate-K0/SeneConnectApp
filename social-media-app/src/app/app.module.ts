@@ -22,6 +22,8 @@ import { GuardAuthService } from './guard-auth.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { DragDropModule } from '@angular/cdk/drag-drop';
+
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
@@ -69,7 +71,8 @@ import { ProfileComponent } from './profile/profile.component';
     MatInputModule,
     MatIconModule,
     MatSelectModule,
-    MatCardModule
+    MatCardModule,
+    DragDropModule
   ],
   providers: [AuthService, UserService, PostService, 
     { provide: HTTP_INTERCEPTORS, useClass: InterceptTokenService, multi: true},
