@@ -12,6 +12,7 @@ import { AuthService } from '../auth.service';
 export class NewpostComponent implements OnInit {
   post: Post = new Post();
   psts: any;
+  error :string = "";
 
   constructor(private _postService : PostService, private _router : Router, private _authService: AuthService) { }
 
@@ -20,6 +21,16 @@ export class NewpostComponent implements OnInit {
   }
 
   formSubmit(): void {
+    if (this.post.featuredImage.match("^[a-zA-Z0-9-=_+]*.[png]?[jpg]?[jpeg]?$")) {
+      this.error = "Featured image isn't in image format .png, .jpg, .jpeg";
+      return;
+    }
+
+    if (this.post.featuredImage.match("^[\s]+$")) {
+      this.error = "Caption is needed";
+      return;
+    }
+
     this.post.postDate = new Date().toLocaleDateString();
     this.post.postedBy = this._authService.getUsername()!;
     this.post.likes = 0;

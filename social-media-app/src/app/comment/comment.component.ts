@@ -27,17 +27,19 @@ export class CommentComponent implements OnInit {
   }
 
   newComment() : void {
-    this.post?.comments.push(
-      {
-        author: this._authService.getUsername()!,
-        comment: this.commentText,
-        date: new Date().toLocaleDateString()
-      }
-    );
-
-    this._postService.updatePostById(this.post._id, this.post).subscribe(() => {
-      this.commentText = "";
-    });
+    // if (this.commentText !== "") {
+      this.post?.comments.push(
+        {
+          author: this._authService.getUsername()!,
+          comment: this.commentText,
+          date: new Date().toLocaleDateString()
+        }
+      );
+  
+      this._postService.updatePostById(this.post._id, this.post).subscribe(() => {
+        this.commentText = "";
+      });
+    // }
   }
 
   ngOnDestroy(): void {
