@@ -49,3 +49,8 @@
 ::ng-deep.mat-input-element {
     caret-color: white !important;
 }
+
+::ng-deep .mat-form-field-wrapper {
+    margin-bottom: -1em;
+    margin-top: -1em;
+ }

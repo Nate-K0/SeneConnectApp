@@ -1,6 +1,6 @@
 <div class="home-container">
     <span class="home-text">{{profile.bio}}</span>
-    <h1 class="home-text1">{{profile.userName}}</h1>
+    <h1 class="home-text1">@{{profile.userName}}</h1>
     <img
       alt="image"
       src={{profile.profilePic}}
@@ -10,5 +10,5 @@
       <span>My Posts</span>
     </h1>
     <h1 class="home-text5">{{profile.followers}} Followers</h1>
-    <a (click)="editProfile($event, profile._id)" class="home-link">Edit Profile</a>
+    <a (click)="editProfile($event, profile._id)" class="home-link" style="text-decoration: none;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;&nbsp;Edit Profile</a>
 </div>

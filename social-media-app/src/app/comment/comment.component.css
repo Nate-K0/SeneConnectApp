@@ -1,11 +1,7 @@
-.comment-block {
-    border: 1px solid black;
-    border-radius: 1px;
-}
-
 .comment-author {
     left: 10px;
     top: 5px;
+    color: blue;
 }
 
 .comment-date {
@@ -16,4 +12,8 @@
 .comment-text {
     left: 10px;
     top: 50px;
+}
+
+mat-card {
+    width: 800px;
 }

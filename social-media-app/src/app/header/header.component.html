@@ -6,35 +6,36 @@
       <div class="navbar-header d-flex align-items-center justify-content-between">
         <a routerLink="/home" class="navbar-brand" routerLinkActive='active'>SeneConnect</a>
       </div>
-      <!-- Navbar Search -->
-      <form [formGroup]="form" (ngSubmit)="handleSearch()" *ngIf="token && isAdminLoggedIn == 'no'">
-        <mat-form-field>
-          <input #input matInput placeholder="Enter student username..." formControlName="username">
-        </mat-form-field>
-        <button mat-button [disabled]="this.input.value ===''"
-          style="background: transparent; border: none; color:white;">
-          <mat-icon matSuffix style="font-size: 20px">search</mat-icon>
-        </button>
-      </form>
       <!-- Navbar Menu -->
       <ul class="navbar-nav mr-auto">
+        <!-- Navbar Search -->
         <li class="nav-item" *ngIf="token && isAdminLoggedIn == 'yes'"><a routerLink="/admin/users" class="nav-link "
-            routerLinkActive='active'>Users</a></li>
+            routerLinkActive='active'><i class="fa fa-users" aria-hidden="true"></i>&nbsp;&nbsp;Users</a></li>
         <li class="nav-item" *ngIf="token && isAdminLoggedIn == 'yes'"><a routerLink="/admin/posts" class="nav-link "
-            routerLinkActive='active'>Posts</a></li>
+            routerLinkActive='active'><i class="fa fa-camera" aria-hidden="true"></i>&nbsp;&nbsp;Posts</a></li>
         <li class="nav-item" *ngIf="!(token)"><a routerLink="/login" class="nav-link "
-            routerLinkActive='active'>Login</a></li>
+            routerLinkActive='active'><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;&nbsp;Login</a></li>
         <li class="nav-item" *ngIf="!(token)"><a routerLink="/signup" class="nav-link "
-            routerLinkActive='active'>Register</a></li>
+            routerLinkActive='active'><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp;&nbsp;Register</a></li>
         <!-- My Account should be visible only when logged in
           Login and Register buttons are hidden when logged in 
           Navbar contains Logout link -->
+          <li class="nav-item" *ngIf="token && isAdminLoggedIn == 'no'">
+            <form [formGroup]="form" (ngSubmit)="handleSearch()" *ngIf="token && isAdminLoggedIn == 'no'">
+              <mat-form-field>
+                <input #input matInput placeholder="Enter student username..." formControlName="username">
+              </mat-form-field>
+              <button mat-button [disabled]="this.input.value ===''" style="background: transparent; border: none; color:white;">
+                <mat-icon matSuffix style="font-size: 20px">search</mat-icon>
+              </button>
+            </form>
+          </li>&nbsp;&nbsp;&nbsp;
           <li class="nav-item" *ngIf="token && isAdminLoggedIn == 'no'"><a routerLink="/newpost" class="nav-link "
-            routerLinkActive='active'>New Post</a></li>
+            routerLinkActive='active'><i class="fa fa-plus-square" aria-hidden="true"></i>&nbsp;&nbsp;New Post</a></li>
         <li class="nav-item" *ngIf="token && isAdminLoggedIn == 'no'"><a routerLink="/profile" class="nav-link "
-            routerLinkActive='active'>My Profile</a></li>
+            routerLinkActive='active'><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;My Profile</a></li>
         <li class="nav-item" *ngIf="token">
-          <a routerLink="/login" (click)="handleLogout()" class="nav-link " routerLinkActive='active'>Logout</a>
+          <a routerLink="/login" (click)="handleLogout()" class="nav-link " routerLinkActive='active'><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;&nbsp;Logout</a>
         </li>
       </ul>
     </div>

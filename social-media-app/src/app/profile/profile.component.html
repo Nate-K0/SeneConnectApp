@@ -1,6 +1,6 @@
 <div class="home-container">
     <span class="home-text">{{profile.bio}}</span>
-    <h1 class="home-text1">{{profile.userName}}</h1>
+    <h1 class="home-text1">@{{profile.userName}}</h1>
     <img
       alt="image"
       src={{profile.profilePic}}
@@ -11,5 +11,5 @@
     </h1>
     <h1 class="home-text5">{{profile.followers}} Followers</h1>
     <button (click)="handleFollow()" *ngIf="!profile.followedBy.includes(username)" class="followButton">Follow</button>
-    <button (click)="handleUnFollow()" *ngIf="profile.followedBy.includes(username)" class="followButton">UnFollow</button>
+    <button (click)="handleUnFollow()" *ngIf="profile.followedBy.includes(username)" class="followButton">Unfollow</button>
 </div>
