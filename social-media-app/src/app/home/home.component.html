@@ -56,7 +56,7 @@
             <small>{{post.postDate}}</small>
           </div>
         </div>
-        <div class="likes">
+        <div class="likes" id="likeID">
           <a (click)="handleLike(post._id)" class="btn btn-lg" *ngIf="post.likedBy.includes(username)">
             <i class="fa fa-heart" style='color: red'></i> {{post.likes}}</a>
 
