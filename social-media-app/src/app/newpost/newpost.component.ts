@@ -21,13 +21,15 @@ export class NewpostComponent implements OnInit {
   }
 
   formSubmit(): void {
+    this.error = "";
+    
     if (this.post.featuredImage.match("^[a-zA-Z0-9-=_+]*.[png]?[jpg]?[jpeg]?$")) {
       this.error = "Featured image isn't in image format .png, .jpg, .jpeg";
       return;
     }
 
-    if (this.post.featuredImage.match("^[\s]+$")) {
-      this.error = "Caption is needed";
+    if (this.post.caption.length === 0) {
+      this.error = "Caption Needed";
       return;
     }
 
