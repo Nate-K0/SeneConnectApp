@@ -17,7 +17,7 @@
     <div class="comments">
         <div class="comment-block" *ngFor="let comment of post.comments">
             <div class="comment-author">@{{comment?.author}}</div>
-            <div class="comment-date">{{comment?.date}}</div>
+            <div class="comment-date">{{comment?.date | date:'mediumDate'}}</div>
             <div class="comment-text">{{comment?.comment}}</div><br>
         </div>
       </div>
