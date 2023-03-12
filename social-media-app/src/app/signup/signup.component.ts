@@ -22,6 +22,8 @@ export class SignupComponent implements OnInit {
   }
 
   formSubmit(): void {
+      this.user.userName = this.user.userName.toLowerCase();
+      
       this.newUserSub = this._userService.newUser(this.user).subscribe(
       (message) => {
         if (this.user.userName != "Admin") {
