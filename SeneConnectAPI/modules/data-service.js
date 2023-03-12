@@ -34,7 +34,6 @@ module.exports = function(mongoDBConnectionString){
         },
         addNewPost: function(data){
             return new Promise((resolve,reject)=>{
-
                 let newPost = new Post(data);
 
                 newPost.save((err) => {
@@ -85,7 +84,9 @@ module.exports = function(mongoDBConnectionString){
         },
         LoginUser: function(data){
             return new Promise((resolve,reject)=>{
-                User.find({userName: data.userName}).limit(1).exec().then((user) => {
+                var usernameLower = data.userName.toLowerCase();
+                
+                User.find({userName: usernameLower}).limit(1).exec().then((user) => {
                     if (user.length == 0) {
                         reject("No user with " + data.userName + " is registered")
                     } else {
@@ -155,7 +156,7 @@ module.exports = function(mongoDBConnectionString){
         getUserByUserName: function(username){
             return new Promise((resolve,reject)=>{
                 var usernameLower = username.toLowerCase();
-                
+
                 User.findOne({userName: usernameLower}).exec().then(user=>{
                     resolve(user);
                 }).catch(err=>{
