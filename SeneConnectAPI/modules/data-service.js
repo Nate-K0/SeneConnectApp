@@ -155,9 +155,8 @@ module.exports = function(mongoDBConnectionString){
         getUserByUserName: function(username){
             return new Promise((resolve,reject)=>{
                 var usernameLower = username.toLowerCase();
-
+                
                 User.findOne({userName: usernameLower}).exec().then(user=>{
-                    user.userName = user.userName.toLowerCase();
                     resolve(user);
                 }).catch(err=>{
                     reject(err);
