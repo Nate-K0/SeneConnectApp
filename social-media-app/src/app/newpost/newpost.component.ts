@@ -37,10 +37,6 @@ export class NewpostComponent implements OnInit {
     this.post.postedBy = this._authService.getUsername()!;
     this.post.likes = 0;
     this.post.comments = [];
-    this.post.comments.forEach(c => {
-      c.replies = [];
-    });
-    
     this.post.likedBy = [];
     
     this.psts = this._postService.newPost(this.post).subscribe(() => this._router.navigate(['/home']));
