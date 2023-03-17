@@ -51,8 +51,10 @@ export class CommentComponent implements OnInit {
   }
 
   handleDeleteComment(comment : Comment) : void {
+    comment.comment = "<deleted>";
+
     var idx : number = this.post.comments.indexOf(comment);
-    delete this.post.comments[idx];
+    this.post.comments[idx] = comment;
 
     this._postService.updatePostById(this.post._id, this.post).subscribe(() => {
       this.commentText = "";
