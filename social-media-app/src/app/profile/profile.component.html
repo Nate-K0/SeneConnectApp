@@ -6,10 +6,48 @@
       src={{profile.profilePic}}
       class="home-image"
     />
-    <h1 class="home-text2">
-      <span>Their Posts</span>
-    </h1>
     <h1 class="home-text5">{{profile.followers}} Followers</h1>
     <button (click)="handleFollow()" *ngIf="!profile.followedBy.includes(username)" class="followButton">Follow</button>
     <button (click)="handleUnFollow()" *ngIf="profile.followedBy.includes(username)" class="followButton">Unfollow</button>
+
+    <h1 class="home-text2">
+      <span>Their Posts</span>
+    </h1>
+    <div class="container">
+      <div class="cards" *ngFor="let post of posts">
+        <div class="card">
+          <div class="card__header">
+            <img src="{{post.featuredImage}}" alt="card__image" class="card__image" width="600">
+          </div>
+          <div class="card__body">
+            <h4>{{post.caption}}</h4>
+          </div>
+          <div class="card__footer">
+            <div class="user">
+              <div class="user__info">
+                <h5 (click)="viewProfile(post.postedBy)" style="text-decoration: none; color: blue">@{{post.postedBy}}</h5>
+                <small>{{post.postDate | date:'mediumDate'}}</small>
+              </div>
+            </div>
+            <div class="likes" id="likeID">
+              <a (click)="handleLike(post._id)" class="btn btn-lg" *ngIf="post.likedBy.includes(username)">
+                <i class="fa fa-heart" id="like-icon" style='color: red'></i> {{post.likes}}</a>
+    
+              <a (click)="handleLike(post._id)" class="btn btn-lg" *ngIf="!post.likedBy.includes(username)">
+                <i class="fa fa-heart-o" id="like-icon"></i> {{post.likes}}</a>
+            </div>
+            <div class="comments"><a (click)="addComment(post._id)" class="btn btn-lg">
+              <i class="fa fa-comment-o"></i> {{post.comments.length}}</a>
+            </div>
+            <div class="delete w-50" *ngIf="username == post.postedBy"><a (click)="handleDelete(post._id)"
+                class="btn btn-lg btn-danger"><i class="fa fa-trash-o"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <div class="to-top" (click)="scrollToTop()" [ngClass]="{ 'show-scrollTop': windowScrolled }">
+        <i class="fa fa-arrow-up"></i>
+      </div>
+    </div>
 </div>
