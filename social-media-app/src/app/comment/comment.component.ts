@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { Post } from '../Post';
 import { PostService } from '../post.service';
+import { Comment } from '../Comment';
+
 
 @Component({
   selector: 'app-comment',
@@ -11,8 +13,10 @@ import { PostService } from '../post.service';
 })
 export class CommentComponent implements OnInit {
   post: Post = new Post();
+  comment !: Comment;
   comSub : any;
   commentText!: string;
+  username !: string;
 
   constructor(private _postService : PostService, private route : ActivatedRoute, private _authService : AuthService) { }
 
@@ -24,6 +28,8 @@ export class CommentComponent implements OnInit {
         }
       })
     })
+
+    this.username = this._authService.getUsername()!;
   }
 
   newComment() : void {
@@ -38,6 +44,15 @@ export class CommentComponent implements OnInit {
         date: new Date().toLocaleDateString()
       }
     );
+
+    this._postService.updatePostById(this.post._id, this.post).subscribe(() => {
+      this.commentText = "";
+    });
+  }
+
+  handleDeleteComment(comment : Comment) : void {
+    var idx : number = this.post.comments.indexOf(comment);
+    delete this.post.comments[idx];
 
     this._postService.updatePostById(this.post._id, this.post).subscribe(() => {
       this.commentText = "";
