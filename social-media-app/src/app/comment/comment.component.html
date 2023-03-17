@@ -13,13 +13,15 @@
             </mat-card-actions>
             </div>
           </form>
-    </div>
-    <div class="comments">
-        <div class="comment-block" *ngFor="let comment of post.comments">
-            <div class="comment-author">@{{comment?.author}}</div>
-            <div class="comment-date">{{comment?.date | date:'mediumDate'}}</div>
-            <div class="comment-text">{{comment?.comment}}</div><br>
-        </div>
+      </div>
+      <div class="comments">
+          <div class="comment-block" *ngFor="let comment of post.comments">
+              <div class="comment-author">@{{comment?.author}}</div>
+              <div class="comment-date">{{comment?.date | date:'mediumDate'}}</div>
+              <div class="comment-text">{{comment?.comment}}</div><br>
+              <div class="comment-delete" *ngIf="username == comment.author"><a (click)="handleDeleteComment(comment)"
+                class="btn btn-lg btn-danger"><i class="fa fa-trash-o"></i></a></div>
+          </div>
       </div>
     </mat-card>
 </div>
