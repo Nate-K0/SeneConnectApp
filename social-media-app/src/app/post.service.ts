@@ -25,8 +25,8 @@ export class PostService {
     return this.http.get<Post[]>("https://seneconnect-api.vercel.app/api/posts?page=" + 1 + "&perPage=" + Number.MAX_SAFE_INTEGER + "");
   }
 
-  getAllPostsByUser(username: string): Observable<Post[]> {
-    return this.http.get<Post[]>(`https://seneconnect-api.vercel.app/api/posts/${username}?page=" + ${1} + "&perPage=" + ${Number.MAX_SAFE_INTEGER} + ""`);
+  getAllPostsByUser(userName: string): Observable<Post[]> {
+    return this.http.get<Post[]>("https://seneconnect-api.vercel.app/api/posts/" + userName + "?page=" + 1 + "&perPage=" + Number.MAX_SAFE_INTEGER + "");
   }
 
   newPost(data: Post): Observable<any> {
