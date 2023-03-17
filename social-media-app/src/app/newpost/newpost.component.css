@@ -1,3 +1,15 @@
 mat-card {
     width: 600px;
 }
+
+.return {
+    padding: 10px 10px 10px 10px;
+    font-size: 17px;
+    background-color: red;
+    color: white;
+    border: none;
+}
+
+.return:hover {
+    background-color: darkred;
+}

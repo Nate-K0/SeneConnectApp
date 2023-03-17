@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { Profile } from '../Profile';
 import { UserService } from '../user.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-edit-profile',
@@ -14,7 +15,7 @@ export class EditProfileComponent implements OnInit {
   prfl: any;
   username !: string;
 
-  constructor(private _userService: UserService, private _authService: AuthService, private router : Router) { }
+  constructor(private _userService: UserService, private _authService: AuthService, private router : Router, private _location: Location) { }
 
   ngOnInit(): void {
     this.username = this._authService.getUsername()!;
@@ -32,5 +33,9 @@ export class EditProfileComponent implements OnInit {
 
   ngOnDestroy() : void {
     if (this.prfl) this.prfl.unsubscribe();
+  }
+
+  goBack() {
+    this._location.back();
   }
 }

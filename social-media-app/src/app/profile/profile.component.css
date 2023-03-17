@@ -1,56 +1,30 @@
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
-
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
+}
+
+mat-card {
+  width: 800px;
 }
 
 .to-top {
-    cursor: pointer;
-    position: fixed;
-    width: 50px;
-    height: 50px;
-    background: red;
-    bottom: 40px;
-    right: 50px;
-    text-decoration: none;
-    text-align: center;
-    line-height: 50px;
-    color: white;
-    font-size: 22px;
-    opacity: 0;
-  }
-  
+  cursor: pointer;
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  background: red;
+  bottom: 40px;
+  right: 50px;
+  text-decoration: none;
+  text-align: center;
+  line-height: 50px;
+  color: white;
+  font-size: 22px;
+  opacity: 0;
+}
+
 .show-scrollTop {
-    opacity: 1;
-    transition: all 0.2s ease-in-out;
-}
-
-
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-body {
-  font-family: "Quicksand", sans-serif;
-  display: grid;
-  place-items: center;
-  height: 100vh;
-  background: #7f7fd5;
-  background: linear-gradient(to right, #91eae4, #86a8e7, #7f7fd5);
-}
-
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  max-width: 1200px;
-  margin-block: 2rem;
-  gap: 2rem;
+  opacity: 1;
+  transition: all 0.2s ease-in-out;
 }
 
 img {
@@ -61,113 +35,12 @@ img {
   background-size: 150px;
 }
 
-.cards {
-    position: relative;
-    left: 8%;
+.followButton {
+  font-size: large;
+  border-radius: 5px;
+  background-color: red;
+  color: white;
+  padding: 10px;
+  border: none;
+  position: absolute;
 }
-
-.card {
-  display: flex;
-  flex-direction: column;
-  width: clamp(20rem, calc(20rem + 2vw), 22rem);
-  overflow: hidden;
-  box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
-  border-radius: 1em;
-  background: #ECE9E6;
-  background: linear-gradient(to right, #FFFFFF, #ECE9E6);
-}
-
-
-.card__body {
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: .5rem;
-}
-
-
-.card__body h4 {
-  font-size: 1.5rem;
-  text-transform: capitalize;
-}
-
-.card__footer {
-  display: flex;
-  padding: 1rem;
-  margin-top: auto;
-}
-
-.user {
-  display: flex;
-  gap: .5rem;
-}
-
-.user__info > small {
-  color: #666;
-}
-
-:host { 
-    display: contents; 
-  }
-  .home-container {
-    width: 100%;
-    display: flex;
-    overflow: auto;
-    min-height: 100vh;
-    align-items: flex-end;
-    flex-direction: column;
-    justify-content: flex-start;
-  }
-  .home-text {
-    top: 162px;
-    left: 320px;
-    width: 500px;
-    height: 80px;
-    position: absolute;
-    font-size: 23px;
-    text-transform: capitalize;
-  }
-  .home-text1 {
-    top: 75px;
-    left: 319px;
-    position: absolute;
-  }
-  .home-image {
-    top: 43px;
-    left: 43px;
-    height: 202px;
-    position: absolute;
-    align-self: flex-start;
-    object-fit: cover;
-  }
-  .home-text2 {
-    top: 314px;
-    left: 56px;
-    position: absolute;
-  }
-  .home-text5 {
-    top: 75px;
-    right: 410px;
-    position: absolute;
-  }
-  .home-link {
-    top: 154px;
-    right: 72px;
-    padding: 3px;
-    position: absolute;
-    font-size: 20px;
-    border-color: var(--dl-color-gray-black);
-    border-width: 3px;
-  }
-  
-  .followButton {
-    top: 145px;
-    right: 380px;
-    font-size: large;
-    border-radius: 5px;
-    background-color: red;
-    color: white;
-    padding: 10px;
-    border: none;
-    position: absolute;
-  }
