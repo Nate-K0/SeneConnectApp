@@ -117,6 +117,20 @@ module.exports = function(mongoDBConnectionString){
                 }
             });
         },
+        getAllPostsByUser: function(username, page, perPage){
+            return new Promise((resolve,reject)=>{
+                if(+page && +perPage){
+                        page = (+page) - 1;                      
+                        Post.find({postedBy: username}).sort({postDate: -1}).skip(page * +perPage).limit(+perPage).exec().then(posts=>{
+                            resolve(posts)
+                        }).catch(err=>{
+                            reject(err);
+                        });
+                }else{
+                    reject('page and perPage query parameters must be present');
+                }
+            });
+        },
         getAllUsers: function(){
             return new Promise((resolve,reject)=>{             
                 User.find({}).exec().then(posts=>{

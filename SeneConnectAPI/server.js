@@ -103,6 +103,15 @@ app.get("/api/posts", async (req, res) => {
         })
 });
 
+app.get("/api/posts/:userName", async (req, res) => {
+    data.getAllPostsByUser(req.params.userName, req.query.page, req.query.perPage).then((data) => {
+        res.json(data);
+    })
+        .catch((err) => {
+            res.json({ message: `an error occurred: ${err}` });
+        })
+});
+
 app.get("/api/users", async (req, res) => {
     data.getAllUsers().then((data) => {
         res.json(data);
