@@ -43,11 +43,11 @@ export class NewpostComponent implements OnInit {
     this.psts = this._postService.newPost(this.post).subscribe(() => this._router.navigate(['/home']));
   }
 
-  ngOnDestroy() {
-    if (this.psts) this.psts.unsubscribe();
-  }
-
   goBack() {
     this._location.back();
+  }
+
+  ngOnDestroy() {
+    if (this.psts) this.psts.unsubscribe();
   }
 }

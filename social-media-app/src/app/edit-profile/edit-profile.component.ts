@@ -31,11 +31,11 @@ export class EditProfileComponent implements OnInit {
     this.prfl = this._userService.updateProfileById(this.profile._id, this.profile).subscribe(() => this.router.navigate(['/profile']));
   }
 
-  ngOnDestroy() : void {
-    if (this.prfl) this.prfl.unsubscribe();
-  }
-
   goBack() {
     this._location.back();
+  }
+
+  ngOnDestroy() : void {
+    if (this.prfl) this.prfl.unsubscribe();
   }
 }
