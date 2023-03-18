@@ -1,4 +1,4 @@
-<div class="home-container">
+<!-- <div class="home-container">
     <span class="home-text">{{profile.bio}}</span>
     <h1 class="home-text1">@{{profile.userName}}</h1>
     <img
@@ -11,4 +11,68 @@
     </h1>
     <h1 class="home-text5">{{profile.followers}} Followers</h1>
     <a (click)="editProfile($event, profile._id)" class="home-link" style="text-decoration: none;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;&nbsp;Edit Profile</a>
+</div> -->
+
+
+<div class="container">
+  <div class="row">
+    <div class="d-flex justify-content-center">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            <img alt="image" src={{profile.profilePic}}><br/>
+            <h1 style="font-weight: bold;">@{{profile.userName}}</h1>
+          </mat-card-title>
+          <div class="col-sm-7" align="right">
+            <mat-card-actions>
+              <a (click)="editProfile($event, profile._id)" class="home-link" style="text-decoration: none; font-size: large;">
+                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;&nbsp;Edit Profile</a>
+            </mat-card-actions>
+            </div>
+          <mat-card-subtitle>
+            <h2>{{profile.bio}}</h2>
+            <h3>{{profile.followers}} Followers</h3>
+          </mat-card-subtitle>
+        </mat-card-header>
+
+        <!-- <mat-card-content>
+          <div *ngFor="let post of posts">
+            <hr />
+            <mat-card-header>
+              <mat-card-title>
+                <h1>Recent Posts</h1>
+                <div class="post-thumbnail">
+                  <img src="{{post.featuredImage}}" alt="..." class="img-fluid" width="400px" height="400px">
+                </div>
+              </mat-card-title>
+              <mat-card-subtitle>
+                <div><i class="fa fa-clock-o"></i> {{post.postDate | date:'mediumDate'}}</div><br>
+                <div class="caption">
+                  <h3>{{post.caption}}</h3>
+                </div>
+              </mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-actions align="end">
+              <div class="likes">
+                <a (click)="handleLike(post._id)" class="btn btn-lg" *ngIf="post.likedBy.includes(username)">
+                  <i class="fa fa-heart" style='color: red'></i> {{post.likes}}</a>
+                <a (click)="handleLike(post._id)" class="btn btn-lg" *ngIf="!post.likedBy.includes(username)">
+                  <i class="fa fa-heart-o"></i> {{post.likes}}</a>
+              </div>
+              <div class="comments"><a (click)="addComment(post._id)" class="btn btn-lg">
+                  <i class="fa fa-comment-o"></i> {{post.comments.length}}</a>
+              </div>
+              <div class="delete" *ngIf="username == post.postedBy">
+                <a (click)="handleDelete(post._id)" class="btn btn-lg btn-danger"><i class="fa fa-trash-o"></i></a>
+              </div>
+            </mat-card-actions>
+          </div>
+        </mat-card-content> -->
+      </mat-card>
+
+      <!-- <div class="to-top" (click)="scrollToTop()" [ngClass]="{ 'show-scrollTop': windowScrolled }">
+        <i class="fa fa-arrow-up"></i>
+      </div> -->
+    </div>
+  </div>
 </div>

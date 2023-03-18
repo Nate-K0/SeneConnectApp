@@ -1,4 +1,4 @@
-<br />
+<!-- <br />
 <div class="container">
     <div class="row">
         <div class="d-flex justify-content-center">
@@ -22,6 +22,47 @@
                     <mat-card-actions align="end">
                         <div class="pull-right">
                             <button type="submit" class="btn btn-success btn-sm">Done</button>
+                        </div>
+                    </mat-card-actions>
+                </mat-card>
+            </form>
+        </div>
+    </div>
+</div>
+<br /> -->
+
+
+<br />
+<div class="container">
+    <div class="row">
+        <div class="d-flex justify-content-center">
+            <form (ngSubmit)="confirmEdit()">
+                <mat-card>
+                    <mat-card-title>
+                        <div class="row">
+                            <div class="d-flex justify-content-left">
+                              <button class="return" (click)="goBack()">< Go back</button>
+                            </div>
+                        </div><br/>
+                        <div class="row">
+                            <div class="d-flex justify-content-left">
+                                <h2>Edit Profile</h2>
+                            </div>
+                        </div>
+                    </mat-card-title>
+                    <div class="form-group">
+                        <label>Profile Picture</label>
+                        <input type="text" class="form-control" id="profilePic" name="profilePic" [(ngModel)]="profile.profilePic">
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label>Bio</label>
+                        <input type="text" class="form-control" id="bio" name="bio" [(ngModel)]="profile.bio">
+                    </div>
+                    <br/>
+                    <mat-card-actions align="end">
+                        <div class="pull-right">
+                            <button type="submit" class="btn btn-success btn-md">Done</button>
                         </div>
                     </mat-card-actions>
                 </mat-card>

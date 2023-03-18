@@ -1,3 +1,24 @@
+/* .comment-author {
+    left: 10px;
+    top: 5px;
+    color: blue;
+}
+
+.comment-date {
+    left: 50px;
+    top: 5px;
+}
+
+.comment-text {
+    left: 10px;
+    top: 50px;
+}
+
+mat-card {
+    width: 800px;
+} */
+
+
 .comment-author {
     left: 10px;
     top: 5px;
@@ -12,6 +33,18 @@
 .comment-text {
     left: 10px;
     top: 50px;
+}
+
+.return {
+    padding: 10px 10px 10px 10px;
+    font-size: 17px;
+    background-color: red;
+    color: white;
+    border: none;
+}
+
+.return:hover {
+    background-color: darkred;
 }
 
 mat-card {

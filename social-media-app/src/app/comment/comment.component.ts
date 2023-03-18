@@ -4,6 +4,7 @@ import { AuthService } from '../auth.service';
 import { Post } from '../Post';
 import { PostService } from '../post.service';
 import { Comment } from '../Comment';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class CommentComponent implements OnInit {
   commentText!: string;
   username !: string;
 
-  constructor(private _postService : PostService, private route : ActivatedRoute, private _authService : AuthService) { }
+  constructor(private _postService : PostService, private route : ActivatedRoute, private _authService : AuthService, private _location: Location) { }
 
   ngOnInit(): void {
     this.comSub = this.route.params.subscribe(params =>{
@@ -59,6 +60,10 @@ export class CommentComponent implements OnInit {
     this._postService.updatePostById(this.post._id, this.post).subscribe(() => {
       this.commentText = "";
     });
+  }
+
+  goBack() {
+    this._location.back();
   }
 
   ngOnDestroy(): void {

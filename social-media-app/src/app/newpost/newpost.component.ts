@@ -3,6 +3,7 @@ import { PostService } from '../post.service';
 import { Router } from '@angular/router';
 import { Post } from '../Post';
 import { AuthService } from '../auth.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-newpost',
@@ -14,7 +15,7 @@ export class NewpostComponent implements OnInit {
   psts: any;
   error :string = "";
 
-  constructor(private _postService : PostService, private _router : Router, private _authService: AuthService) { }
+  constructor(private _postService : PostService, private _router : Router, private _authService: AuthService, private _location: Location) { }
 
   ngOnInit(): void {
     
@@ -40,6 +41,10 @@ export class NewpostComponent implements OnInit {
     this.post.likedBy = [];
     
     this.psts = this._postService.newPost(this.post).subscribe(() => this._router.navigate(['/home']));
+  }
+
+  goBack() {
+    this._location.back();
   }
 
   ngOnDestroy() {

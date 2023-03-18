@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
@@ -14,7 +15,7 @@ export class EditProfileComponent implements OnInit {
   prfl: any;
   username !: string;
 
-  constructor(private _userService: UserService, private _authService: AuthService, private router : Router) { }
+  constructor(private _userService: UserService, private _authService: AuthService, private router : Router, private _location: Location) { }
 
   ngOnInit(): void {
     this.username = this._authService.getUsername()!;
@@ -28,6 +29,10 @@ export class EditProfileComponent implements OnInit {
 
   confirmEdit() : void {
     this.prfl = this._userService.updateProfileById(this.profile._id, this.profile).subscribe(() => this.router.navigate(['/profile']));
+  }
+
+  goBack() {
+    this._location.back();
   }
 
   ngOnDestroy() : void {
