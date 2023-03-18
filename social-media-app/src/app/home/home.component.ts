@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
     window.scrollTo(0, 0);
   }
 
-  viewProfile(username: string) : void {
+  viewProfile(username: string): void {
     if (this.username == username) {
       this.router.navigate(['/profile']);
     } else {
@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  addComment(id: string) : void {
+  addComment(id: string): void {
     this.router.navigate(['/comment', id]);
   }
 
@@ -69,26 +69,53 @@ export class HomeComponent implements OnInit {
   }
 
   likePost(id: string): void {
-      this.post.likedBy.push(this.username);
-      this.post.likes += 1;
-      this.updatePost(id, this.post);
+    this.post.likedBy.push(this.username);
+    this.post.likes += 1;
+
+    // kills all null in the array
+    const nonNullLikes = this.post.likedBy.filter((element) => element !== null);
+    this.post.likedBy = nonNullLikes;
+
+    // Find the index of the post in the posts array
+    const index = this.posts.findIndex(p => p._id === id);
+
+    // Update the post in the posts array
+    if (index !== -1) {
+      this.posts[index] = { ...this.post };
+    }   
+    
+    this.updatePost(id, this.post);
   }
 
   unlikePost(id: string): void {
-      if (this.post.likes < 1) {
-        this.post.likes = 0;
-      } else {
-        this.post.likes -= 1;
-      }
+    if (this.post.likes < 1) {
+      this.post.likes = 0;
+    } else {
+      this.post.likes -= 1;
+    }
 
-      var idx : number = this.post.likedBy.indexOf(this.username);
-      delete this.post.likedBy[idx];
-      this.updatePost(id, this.post);
+    // kills the null from this use
+    var idx: number = this.post.likedBy.indexOf(this.username);
+    delete this.post.likedBy[idx];
+    
+    // kills all null in the array
+    const nonNullLikes = this.post.likedBy.filter((element) => element !== null);
+    this.post.likedBy = nonNullLikes;
+
+    // Find the index of the post in the posts array
+    const index = this.posts.findIndex(p => p._id === id);
+
+    // Update the post in the posts array
+    if (index !== -1) {
+      this.posts[index] = { ...this.post };
+    }
+
+    this.updatePost(id, this.post);
   }
 
   updatePost(id: string, post: Post): void {
     this.psts = this._postService.updatePostById(id, post).subscribe((message) => {
-      this.router.navigate(['/home']);
+      //this.router.navigate(['/home']); // Refresh unneeded
     });
   }
 
