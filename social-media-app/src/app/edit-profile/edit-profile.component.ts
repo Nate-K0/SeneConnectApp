@@ -1,9 +1,9 @@
-import { Location } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { Profile } from '../Profile';
 import { UserService } from '../user.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-edit-profile',

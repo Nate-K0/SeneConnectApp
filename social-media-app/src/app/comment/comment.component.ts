@@ -6,7 +6,6 @@ import { PostService } from '../post.service';
 import { Comment } from '../Comment';
 import { Location } from '@angular/common';
 
-
 @Component({
   selector: 'app-comment',
   templateUrl: './comment.component.html',
@@ -69,5 +68,4 @@ export class CommentComponent implements OnInit {
   ngOnDestroy(): void {
     if (this.comSub) this.comSub.unsubscribe();
   }
-
 }

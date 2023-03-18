@@ -53,7 +53,7 @@
         <div class="user">
           <div class="user__info">
             <h5 (click)="viewProfile(post.postedBy)" style="text-decoration: none; color: blue">@{{post.postedBy}}</h5>
-            <small>{{post.postDate | date:'mediumDate'}}</small>
+            <small><i class="fa fa-clock-o"></i> {{post.postDate | date:'mediumDate'}}</small>
           </div>
         </div>
         <div class="likes" id="likeID">

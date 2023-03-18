@@ -1,6 +1,11 @@
 <!-- <div class="d-flex justify-content-center">
   <mat-card>
     <div class="new-comment">
+        <div class="row">
+            <div class="d-flex justify-content-left">
+              <button class="return" (click)="goBack()">< Go back</button>
+            </div>
+        </div><br/>
         <form (ngSubmit)="newComment()" class="commenting-form">
             <div class="row">
               <div class="form-group col-md-12">
@@ -8,7 +13,7 @@
               </div>
               <mat-card-actions align="end">
               <div class="pull-right">
-                <button type="submit" class="btn btn-secondary">Add Comment</button>
+                <button type="submit" class="btn btn-secondary">Add comment</button>
               </div>
             </mat-card-actions>
             </div>
