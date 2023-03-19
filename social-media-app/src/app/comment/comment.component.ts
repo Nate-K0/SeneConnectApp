@@ -5,6 +5,7 @@ import { Post } from '../Post';
 import { PostService } from '../post.service';
 import { Comment } from '../Comment';
 import { Location } from '@angular/common';
+import { format } from 'date-fns';
 
 @Component({
   selector: 'app-comment',
@@ -41,7 +42,7 @@ export class CommentComponent implements OnInit {
       {
         author: this._authService.getUsername()!,
         comment: this.commentText,
-        date: new Date().toLocaleDateString()
+        date: format(new Date(), "MMMM dd, yyyy HH:mm:ss zzz")
       }
     );
 

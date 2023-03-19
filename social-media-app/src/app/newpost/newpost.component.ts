@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Post } from '../Post';
 import { AuthService } from '../auth.service';
 import { Location } from '@angular/common';
+import { format } from 'date-fns';
 
 @Component({
   selector: 'app-newpost',
@@ -34,7 +35,7 @@ export class NewpostComponent implements OnInit {
       return;
     }
 
-    this.post.postDate = new Date().toLocaleDateString();
+    this.post.postDate = format(new Date(), "MMMM dd, yyyy HH:mm:ss zzz");
     this.post.postedBy = this._authService.getUsername()!;
     this.post.likes = 0;
     this.post.comments = [];
