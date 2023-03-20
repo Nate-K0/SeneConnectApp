@@ -5,12 +5,9 @@
     </div>
     <div *ngIf="user != null">
         <h1>Search</h1>
-        <mat-card routerLink="/profile">
+        <mat-card (click)="viewProfile(user.userName)">
             <mat-card-header>
                 <mat-card-title>@{{user.userName}}</mat-card-title>
-                <mat-card-subtitle>
-                    {{user.followers}}&nbsp;Followers&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;{{user.following}}&nbsp;Following
-                </mat-card-subtitle>
             </mat-card-header>
             <mat-card-actions align="end">
                 <button mat-button>View Profile</button>
