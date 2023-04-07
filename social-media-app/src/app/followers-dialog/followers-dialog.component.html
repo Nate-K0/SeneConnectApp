@@ -1,0 +1,7 @@
+<h1 mat-dialog-title>My Followers</h1>
+<div mat-dialog-content *ngFor="let follower of data.followers">
+    <p style="color: blue;" (click)="viewProfile(follower)">{{follower}}</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+</div>

@@ -38,6 +38,8 @@ import { NewpostComponent } from './newpost/newpost.component';
 import { CommentComponent } from './comment/comment.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { ProfileComponent } from './profile/profile.component';
+import { FollowersDialogComponent } from './followers-dialog/followers-dialog.component';
+import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -57,6 +59,7 @@ import { ProfileComponent } from './profile/profile.component';
     CommentComponent,
     EditProfileComponent,
     ProfileComponent,
+    FollowersDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -72,11 +75,13 @@ import { ProfileComponent } from './profile/profile.component';
     MatIconModule,
     MatSelectModule,
     MatCardModule,
+    MatDialogModule,
     DragDropModule
   ],
   providers: [AuthService, UserService, PostService, 
     { provide: HTTP_INTERCEPTORS, useClass: InterceptTokenService, multi: true},
-    GuardAuthService],
+    GuardAuthService,
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
