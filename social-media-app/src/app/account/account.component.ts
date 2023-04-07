@@ -5,6 +5,8 @@ import { Post } from '../Post';
 import { PostService } from '../post.service';
 import { Profile } from '../Profile';
 import { UserService } from '../user.service';
+import { MatDialog } from '@angular/material/dialog';
+import { FollowersDialogComponent } from '../followers-dialog/followers-dialog.component';
 
 @Component({
   selector: 'app-account',
@@ -19,7 +21,7 @@ export class AccountComponent implements OnInit {
   post !: Post;
   psts: any;
 
-  constructor(private _userService: UserService, private _authService: AuthService, private router : Router, private _postService: PostService) { }
+  constructor(private _userService: UserService, private _authService: AuthService, private router : Router, private _postService: PostService, public dialog : MatDialog) { }
 
   ngOnInit(): void {
     this.username = this._authService.getUsername()!;
@@ -34,6 +36,12 @@ export class AccountComponent implements OnInit {
       if (posts.length > 0) {
         this.posts = posts;
       }
+    });
+  }
+
+  openDialog(): void {
+    this.dialog.open(FollowersDialogComponent, {
+      data: { followers: this.profile.followedBy }
     });
   }
 

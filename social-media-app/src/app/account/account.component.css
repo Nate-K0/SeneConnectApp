@@ -185,3 +185,11 @@ img {
     position: absolute;
   }
   
+.follower-link {
+  color: blue;
+}
+
+.follower-link:hover {
+  color: aqua;
+  text-decoration: underline;
+}

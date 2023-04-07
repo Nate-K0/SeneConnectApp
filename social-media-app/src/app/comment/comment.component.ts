@@ -62,6 +62,18 @@ export class CommentComponent implements OnInit {
     });
   }
 
+  handleReplyComment(comment : Comment) : void {
+    var cutComment = "";
+
+    if (comment.comment.length >= 10) {
+      cutComment = comment.comment.substring(0,10);
+    } else {
+      cutComment = comment.comment;
+    }
+
+    this.commentText = "Replying to " + comment.author + " from " + comment.date + " > " + cutComment + " :   ";
+  }
+
   goBack() {
     this._location.back();
   }

@@ -47,6 +47,10 @@ export class ProfileComponent implements OnInit {
     this.profile.followedBy.push(this.username);
     this.profile.followers = this.profile.followers + 1!;
 
+    // kills all null in the array
+    const nonNullLikes = this.profile.followedBy.filter((element) => element !== null);
+    this.profile.followedBy = nonNullLikes;
+
     this.prfl = this._userService.updateProfileById(this.profile._id, this.profile).subscribe(() => this.router.navigate(['/profile', this.profile.userName]));
   }
 
@@ -59,6 +63,10 @@ export class ProfileComponent implements OnInit {
 
     var idx : number = this.profile.followedBy.indexOf(this.username);
     delete this.profile.followedBy[idx];
+    
+    // kills all null in the array
+    const nonNullLikes = this.profile.followedBy.filter((element) => element !== null);
+    this.profile.followedBy = nonNullLikes;
 
     this.prfl = this._userService.updateProfileById(this.profile._id, this.profile).subscribe(() => this.router.navigate(['/profile', this.profile.userName]));
   }
@@ -146,5 +154,4 @@ export class ProfileComponent implements OnInit {
     if (this.prfl) this.prfl.unsubscribe();
     if (this.psts) this.psts.unsubscribe();
   }
-
 }

@@ -59,6 +59,8 @@
               <!-- <div class="comment-date">{{comment?.date | date:'mediumDate'}}</div> --> 
               <div class="comment-date">{{comment?.date | date:'MMM d, y, h:mm:ss a'}}</div>
               <div class="comment-text">{{comment?.comment}}</div><br>
+              <div class="comment-reply"><a (click)="handleReplyComment(comment)"
+                class="reply-button"><i class="fa fa-reply"></i></a></div>
               <div class="comment-delete" *ngIf="username == comment.author"><a (click)="handleDeleteComment(comment)"
                 class="btn btn-lg btn-danger"><i class="fa fa-trash-o"></i></a></div>
           </div>
