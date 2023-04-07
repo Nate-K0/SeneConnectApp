@@ -50,3 +50,9 @@ mat-card {
 mat-card {
     width: 800px;
 }
+
+.reply-button {
+    background-color: lightgrey;
+    width: 100px;
+    height: 100px;
+}
