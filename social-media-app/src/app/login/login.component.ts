@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
         }
       },
       (error) => {
-        if (error.error.message == "[object Object]") {
+        if (error.error.message == "{}") {
           this.warning = "API Booting up, try again";
         } else {
           this.warning = error.error.message;
