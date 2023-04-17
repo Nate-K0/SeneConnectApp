@@ -26,7 +26,7 @@ export class SignupComponent implements OnInit {
       
       this.newUserSub = this._userService.newUser(this.user).subscribe(
       (message) => {
-        if (this.user.userName != "Admin") {
+        if (this.user.userName != "admin") {
           this.profile.userName = this.user.userName;
           this.profile.profilePic = "https://play.teleporthq.io/static/svg/default-img.svg";
           this.profile.bio = "Template BIO";

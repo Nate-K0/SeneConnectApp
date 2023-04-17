@@ -83,7 +83,7 @@ app.post("/api/login", async (req, res) => {
 
         var isAdmin = false;
 
-        if (user.userName == "Admin") {
+        if (user.userName == "admin") {
             isAdmin = true;
         }
 
