@@ -44,3 +44,10 @@ img {
   border: none;
   position: absolute;
 }
+
+.profile-bio {
+  max-width: 20px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}

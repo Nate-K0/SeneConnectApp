@@ -90,7 +90,7 @@ app.post("/api/login", async (req, res) => {
 
         res.json({ message: "login successful", token: token, isAdmin: isAdmin, username: user.userName });
     }).catch((err) => {
-        res.status(422).json({ message: err });
+        res.status(422).json({ message: JSON.stringify(err) });
     });
 });
 
