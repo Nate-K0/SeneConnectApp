@@ -193,3 +193,18 @@ img {
   color: aqua;
   text-decoration: underline;
 }
+
+.profile-image {
+  max-width: 150px;
+  max-height: 150px;
+  border: 1px solid red;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profile-bio {
+  max-width: 200px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
