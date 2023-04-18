@@ -55,14 +55,17 @@
       </div>
       <div class="comments">
           <div class="comment-block" *ngFor="let comment of post.comments">
-              <div class="comment-author">@{{comment?.author}}</div>
-              <!-- <div class="comment-date">{{comment?.date | date:'mediumDate'}}</div> --> 
-              <div class="comment-date">{{comment?.date | date:'MMM d, y, h:mm:ss a'}}</div>
-              <div class="comment-text">{{comment?.comment}}</div><br>
+              <div>
+                <div class="comment-author">@{{comment?.author}}</div>
+                <!-- <div class="comment-date">{{comment?.date | date:'mediumDate'}}</div> --> 
+                <div class="comment-date">{{comment?.date | date:'MMM d, y, h:mm:ss a'}}</div>
+                <div class="comment-text">{{comment?.comment}}</div>
+              </div>
               <div class="comment-reply"><a (click)="handleReplyComment(comment)"
                 class="reply-button"><i class="fa fa-reply"></i></a></div>
               <div class="comment-delete" *ngIf="username == comment.author"><a (click)="handleDeleteComment(comment)"
-                class="btn btn-lg btn-danger"><i class="fa fa-trash-o"></i></a></div>
+                class="btn btn-lg btn-danger"><i class="fa fa-trash-o"></i></a>
+              </div>
           </div>
       </div>
     </mat-card>

@@ -20,7 +20,7 @@
       <mat-card>
         <mat-card-header>
           <mat-card-title>
-            <img alt="image" src={{profile.profilePic}}><br/>
+            <img alt="image" src={{profile.profilePic}} class="profile-image"><br/>
             <h1 style="font-weight: bold;">@{{profile.userName}}</h1>
           </mat-card-title>
           <div class="col-sm-7" align="right">
@@ -30,7 +30,7 @@
             </mat-card-actions>
             </div>
           <mat-card-subtitle>
-            <h2>{{profile.bio}}</h2>
+            <h2 class="profile-bio">{{profile.bio}}</h2>
             <h3 class="follower-link" (click)="openDialog()">{{profile.followers}} Followers</h3>
           </mat-card-subtitle>
         </mat-card-header>

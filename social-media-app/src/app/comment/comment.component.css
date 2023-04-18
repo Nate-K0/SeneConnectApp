@@ -1,23 +1,7 @@
-/* .comment-author {
-    left: 10px;
-    top: 5px;
-    color: blue;
+.comment-block {
+    display: grid;
+    grid-template-columns: 7fr 2fr 2fr;
 }
-
-.comment-date {
-    left: 50px;
-    top: 5px;
-}
-
-.comment-text {
-    left: 10px;
-    top: 50px;
-}
-
-mat-card {
-    width: 800px;
-} */
-
 
 .comment-author {
     left: 10px;
@@ -33,6 +17,16 @@ mat-card {
 .comment-text {
     left: 10px;
     top: 50px;
+}
+
+.comment-reply {
+    width: 30px;
+    height: 30px;
+}
+
+.comment-delete {
+    width: 30px;
+    height: 30px;
 }
 
 .return {
@@ -53,6 +47,4 @@ mat-card {
 
 .reply-button {
     background-color: lightgrey;
-    width: 100px;
-    height: 100px;
 }
