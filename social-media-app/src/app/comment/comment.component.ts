@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { Post } from '../Post';
 import { PostService } from '../post.service';
@@ -19,7 +19,7 @@ export class CommentComponent implements OnInit {
   commentText!: string;
   username !: string;
 
-  constructor(private _postService : PostService, private route : ActivatedRoute, private _authService : AuthService, private _location: Location) { }
+  constructor(private _postService : PostService, private route : ActivatedRoute, private _authService : AuthService, private _location: Location, private router : Router) { }
 
   ngOnInit(): void {
     this.comSub = this.route.params.subscribe(params =>{
@@ -65,13 +65,26 @@ export class CommentComponent implements OnInit {
   handleReplyComment(comment : Comment) : void {
     var cutComment = "";
 
-    if (comment.comment.length >= 10) {
-      cutComment = comment.comment.substring(0,10);
+
+    if (comment.comment.includes('Replying to ') == true) {
+      var splitIndex = comment.comment.lastIndexOf(':');
+      cutComment = comment.comment.substring(splitIndex, comment.comment.length);
+      cutComment.replace("[\\t\\n\\r]+\g", '');
     } else {
       cutComment = comment.comment;
     }
+    var dateToString = Date.parse(comment.date);
+    var fullDate = format(dateToString, "MMMM dd, yyyy HH:mm:ss zzz");
 
-    this.commentText = "Replying to " + comment.author + " from " + comment.date + " > " + cutComment + " :   ";
+    this.commentText = "Replying to " + comment.author + " from " + fullDate + " : " + cutComment + " >\n\n";
+  }
+
+  viewProfile(username: string): void {
+    if (this.username == username) {
+      this.router.navigate(['/profile']);
+    } else {
+      this.router.navigate(['/profile', username]);
+    }
   }
 
   goBack() {
