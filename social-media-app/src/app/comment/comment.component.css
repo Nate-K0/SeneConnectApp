@@ -1,12 +1,19 @@
 .comment-block {
     display: grid;
-    grid-template-columns: 7fr 2fr 2fr;
+    grid-template-columns: 9fr 1fr 1fr;
+    border: 0.5px solid red;
+    margin-bottom: 5px;
+    padding: 3px;
 }
 
 .comment-author {
     left: 10px;
     top: 5px;
     color: blue;
+}
+
+.comment-author:hover {
+    color: lightblue;
 }
 
 .comment-date {
@@ -17,6 +24,7 @@
 .comment-text {
     left: 10px;
     top: 50px;
+    white-space: pre-line;
 }
 
 .comment-reply {
@@ -47,4 +55,13 @@ mat-card {
 
 .reply-button {
     background-color: lightgrey;
+}
+
+.reply-button:hover {
+    background-color: darkgray;
+}
+
+.form-control {
+    height: max-content;
+    max-height: fit-content;
 }
